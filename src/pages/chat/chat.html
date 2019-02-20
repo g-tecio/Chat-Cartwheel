@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Chat</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="chatWindow">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-avatar item-left >
+          <img src="">
+        </ion-avatar>
+        <div class="myBubble">
+          <h4></h4>
+        </div>
+        <ion-avatar item-right >
+            <img src="">
+          </ion-avatar>
+          <div class="youBubble">
+            <h4></h4>
+          </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer ion-fixed>
+  <ion-toolbar class="no-border" color="white">
+    <ion-input [(ngModel)]="newMessage" placeholder="Type a message..."></ion-input>
+    <ion-buttons end>
+      <button ion-button (click)="addMessage()">
+        <ion-icon name="send" color="primary" style="font-size: 20px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,23 @@
+page-profile {
+    #person-icon{
+        font-size: 20px;
+    }
+    #card_content{
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 250px;
+        max-height: 250px;
+        border-radius: 125px;
+    }
+    ion-avatar{
+        padding-top: 20px;
+    }
+    #input-icon{
+        padding-right: 5px;
+    }
+}

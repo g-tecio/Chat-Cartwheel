@@ -1,0 +1,22 @@
+page-login {
+    #card-content{
+        border-radius: 20px;
+        margin-top: 50%;
+    }
+	#title_top{
+		text-align: center;
+	}
+    .item-md{
+        padding-left: 0;
+    }
+    #sub-logIn{
+        text-align: center;
+    }
+    #alert-danger{
+        text-align: center;
+        color: #f53d3d;
+    }
+    ion-icon{
+        padding-right: 5px;
+    }
+}

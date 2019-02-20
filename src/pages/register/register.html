@@ -1,0 +1,39 @@
+<ion-content padding class="form-content">
+  <ion-card padding id="card-content">
+    <div class="title_content">
+      <ion-title id="title_top">
+        Sing-Up
+      </ion-title>
+    </div>
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="tryRegister(registerForm.value)" id="form-control">
+      <ion-item>
+        <ion-label floating><ion-icon name="person"></ion-icon> Username</ion-label>
+        <ion-input type="text" formControlName="username" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="person"></ion-icon> Name</ion-label>
+        <ion-input type="text" formControlName="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="mail"></ion-icon> E-mail</ion-label>
+        <ion-input type="email" formControlName="email" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="lock"></ion-icon> Password</ion-label>
+        <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="lock"></ion-icon> Confirm Password</ion-label>
+        <ion-input type="password" formControlName="confirmPassword" class="form-controll" required></ion-input>
+      </ion-item>
+        <button ion-button block class="submit-button" type="submit" [disabled]="!registerForm.valid"><ion-icon name="person-add"></ion-icon> Sing-Up</button>
+          <p class="error-message" color="danger" id="alert-danger">{{errorMessage}}</p>
+          <p class="success-message" color="secondary" id="alert-success">{{successMessage}}</p>
+        <br>
+          <div>
+            <p id="sub-logIn">You already have an account? <a (click)="goLoginPage()">Try Login</a></p>
+          </div>
+        <br>
+    </form> 
+  </ion-card>
+</ion-content>

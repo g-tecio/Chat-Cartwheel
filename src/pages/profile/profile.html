@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button id="person-icon" menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf="user" id="card_content">
+    <ion-avatar>
+        <img class="center" *ngIf="user.image" [src]="user.image"/>
+        <img class="center" *ngIf="!user.image" src="assets/imgs/profile/profile.png"/>
+    </ion-avatar>
+    <ion-card-content>
+        <button ion-button block type="button" color="light" (click)="editProfile()"><ion-icon name="create" style="padding-right: 5px;"></ion-icon>Editar perfil</button>
+      <ion-card-title>
+          {{user.username}}
+      </ion-card-title>
+      <p>
+        {{user.name}}
+      </p>
+      <p *ngIf="user.bio">
+          {{user.bio}}  
+      </p>
+      <p *ngIf="user.work">
+          <ion-icon name="briefcase" id="input-icon"> {{user.work}}</ion-icon>
+      </p>
+      <p *ngIf="user.city">
+          <ion-icon name="locate" id="input-icon"> {{user.city}}</ion-icon>
+      </p>
+    </ion-card-content>
+</ion-card>
+</ion-content>

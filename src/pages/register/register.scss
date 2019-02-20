@@ -1,0 +1,29 @@
+page-register {
+    #card-content{
+        border-radius: 20px;
+        margin-top: 15%;
+    }
+	#title_top{
+		text-align: center;
+	}
+    .item-md{
+        padding-left: 0;
+    }
+    #form-control{
+        padding-top: 10%
+    }
+    #sub-logIn{
+        text-align: center;
+    }
+    #alert-danger{
+        text-align: center;
+        color: #f53d3d;
+    }
+    #alert-success{
+        text-align: center;
+        color: #32db64;
+    }
+    ion-icon{
+        padding-right: 5px;
+    }
+}

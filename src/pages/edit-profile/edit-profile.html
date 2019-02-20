@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Edit Profile</ion-title>
+      <ion-buttons end>
+          <button ion-button id="person-icon" (click)="updateProfile()">
+            <ion-icon name="checkmark-circle"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+    <ion-list *ngIf="user">
+      <ion-avatar>
+        <img class="center" *ngIf="user.image" [src]="user.image"/>
+        <img class="center" *ngIf="!user.image" src="assets/imgs/profile/profile.png"/>
+      </ion-avatar>
+      <button ion-button block type="button" color="light"><ion-icon name="camera" id="icon-camera"></ion-icon> Change photo</button>
+      <ion-item>
+        <ion-label floating><ion-icon name="person" id="input-icon"></ion-icon> Username</ion-label>
+        <ion-input type="text" [(ngModel)]="user.username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="person" id="input-icon"></ion-icon> Name</ion-label>
+        <ion-input type="text" [(ngModel)]="user.name"></ion-input>
+      </ion-item>
+      <ion-item id="bio-input">
+        <ion-label floating> Bio</ion-label>
+        <ion-input type="text" [(ngModel)]="user.bio"></ion-input>
+      </ion-item>
+      <ion-item-divider color="secondary">
+        <ion-label id="section-items">
+          Personal Information
+        </ion-label>
+      </ion-item-divider>
+      <ion-item id="input-phone">
+        <ion-label floating><ion-icon name="call" id="input-icon"></ion-icon> Telephone</ion-label>
+        <ion-input type="text" [(ngModel)]="user.phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="mail" id="input-icon"></ion-icon> Email</ion-label>
+        <ion-input type="text" [(ngModel)]="user.email" disabled="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="briefcase" id="input-icon"></ion-icon> Work</ion-label>
+        <ion-select [(ngModel)]="user.work">
+          <ion-option>Cartwheel Galaxy Inc</ion-option>
+          <ion-option>G-Tec</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="school" id="input-icon"></ion-icon> Scholarship</ion-label>
+        <ion-select [(ngModel)]="user.scholarship">
+          <ion-option>Middle School</ion-option>
+          <ion-option>High School</ion-option>
+          <ion-option>University</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating><ion-icon name="locate" id="input-icon"></ion-icon> City</ion-label>
+        <ion-input type="text" [(ngModel)]="user.city"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Genrer</ion-label>
+          <ion-select [(ngModel)]="user.gender">
+            <ion-option>Male</ion-option>
+            <ion-option>Female</ion-option>
+          </ion-select>
+        </ion-item>
+    </ion-list>
+</ion-content>
