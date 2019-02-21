@@ -51,7 +51,7 @@ export class ContactsPage {
 
   openChat(contact){
     this.chatProvider.initializeChat(contact);
-    this.navCtrl.push(ChatPage);
+    //this.navCtrl.push(ChatPage);
   }
 
 }

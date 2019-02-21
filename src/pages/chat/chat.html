@@ -6,20 +6,26 @@
 
 <ion-content>
   <div class="chatWindow">
-    <ion-list no-lines>
-      <ion-item>
-        <ion-avatar item-left >
-          <img src="">
-        </ion-avatar>
-        <div class="myBubble">
-          <h4></h4>
-        </div>
-        <ion-avatar item-right >
-            <img src="">
+    <ion-list *ngIf="user" no-lines>
+      <ion-item *ngFor="let item of allMessages | async" text-wrap>
+        <ion-item *ngIf="item.sentBy != user">
+          <ion-avatar item-left>
+            <img class="center" *ngIf="item.image" [src]="item.image"/>
+            <img class="center" *ngIf="!item.image" src="assets/imgs/profile/profile.png"/>
+          </ion-avatar>
+          <div class="myBubble">
+            <h4>{{item.message}}</h4>
+          </div>
+        </ion-item>
+        <ion-item *ngIf="item.sentBy === user">
+          <ion-avatar item-right>
+            <img class="center" *ngIf="item.image" [src]="item.image"/>
+            <img class="center" *ngIf="!item.image" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
           <div class="youBubble">
-            <h4></h4>
+            <h4>{{item.message}}</h4>
           </div>
+        </ion-item>
       </ion-item>
     </ion-list>
   </div>

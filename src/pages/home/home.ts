@@ -1,3 +1,4 @@
+import { ChatPage } from './../chat/chat';
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class HomePage {
 
-  chats: Observable<any>;
+  chats: Array<any>;
   allChats = [];
 
   constructor(
@@ -22,15 +23,23 @@ export class HomePage {
     public chatProvider: ChatProvider
     ) {
       this.menuCtrl.enable(false, 'myMenu')
-      this.chats = this.chatProvider.getChats();
-      this.chats.subscribe(chat => {
+      this.chatProvider.getChats().subscribe(chat => {
         console.log(chat);
+        this.chats = chat[1].slice();
+        this.chats = this.chats.concat(chat[0]);
       });
 
   }
 
   openContacts(){
     this.navCtrl.push(ContactsPage)
+  }
+
+  openChat(_chat){
+    console.log(_chat)
+    this.navCtrl.push(ChatPage, {
+      _chat: _chat
+    })
   }
 
 }
