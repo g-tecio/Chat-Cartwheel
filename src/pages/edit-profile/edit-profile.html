@@ -1,9 +1,9 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="cartwheel">
       <ion-title>Edit Profile</ion-title>
       <ion-buttons end>
           <button ion-button id="person-icon" (click)="updateProfile()">
-            <ion-icon name="checkmark-circle"></ion-icon>
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
           </button>
       </ion-buttons>
     </ion-navbar>
@@ -15,7 +15,7 @@
         <img class="center" *ngIf="user.image" [src]="user.image"/>
         <img class="center" *ngIf="!user.image" src="assets/imgs/profile/profile.png"/>
       </ion-avatar>
-      <button ion-button block type="button" color="light"><ion-icon name="camera" id="icon-camera"></ion-icon> Change photo</button>
+      <button ion-button block type="button" color="light" color="cartwheel-second"><ion-icon name="camera" id="icon-camera"></ion-icon> Change photo</button>
       <ion-item>
         <ion-label floating><ion-icon name="person" id="input-icon"></ion-icon> Username</ion-label>
         <ion-input type="text" [(ngModel)]="user.username"></ion-input>
@@ -28,7 +28,7 @@
         <ion-label floating> Bio</ion-label>
         <ion-input type="text" [(ngModel)]="user.bio"></ion-input>
       </ion-item>
-      <ion-item-divider color="secondary">
+      <ion-item-divider color="cartwheel">
         <ion-label id="section-items">
           Personal Information
         </ion-label>

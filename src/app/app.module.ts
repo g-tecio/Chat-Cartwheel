@@ -14,10 +14,8 @@ import { ContactsPage } from './../pages/contacts/contacts';
 import { ChatPage } from './../pages/chat/chat';
 import { TabsPage } from '../pages/tabs/tabs';
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';

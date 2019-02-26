@@ -1,10 +1,10 @@
-import { ChatProvider } from './../../providers/chat/chat';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { Observable } from 'rxjs';
 
 import * as firebase from 'firebase/app';
 
+import { ChatProvider } from './../../providers/chat/chat';
 
 @IonicPage()
 @Component({
@@ -13,6 +13,7 @@ import * as firebase from 'firebase/app';
 })
 export class ChatPage {
 
+  @ViewChild('content') content: Content;
   user: any;
   newMessage: any;
   chat: any;
@@ -25,23 +26,24 @@ export class ChatPage {
     ) {
       this.user = firebase.auth().currentUser.uid;
       this.chat = this.navParams.get('_chat');
-      
-
-      //console.log(this.contact);
-
+      this.scrollTo();
       this.allMessages = this.chatProvider.getAllMessage(this.chat);
       this.allMessages.subscribe((res) => {
         console.log(res);
-      })
-  }
-
-  ionViewDidLoad() {
+    })
   }
 
   addMessage(){
     this.chatProvider.addMessage(this.newMessage, this.chat.id).then(() => {
       this.newMessage = '';
+      this.content.scrollToBottom();
     })
+  }
+
+  scrollTo(){
+    setTimeout(() => {
+      this.content.scrollToBottom();
+    }, 1000);
   }
 
 }

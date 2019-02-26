@@ -2,4 +2,37 @@ page-chat {
     #person-icon{
         font-size: 20px;
     }
+    .youBubble {
+        display: inline;
+    }
+    .youBubble p{
+        float: left;
+        padding: 12px 10px;
+        background-color: #fff;
+        color: #000;
+        border-radius: 20px;
+        border: 1px solid #FF4F00;
+    }
+    .myBubble {
+        display: inline; 
+    }
+    .myBubble p{
+        float: right;
+        padding: 12px 10px;
+        background-color: #fff;
+        color: #000;
+        border-radius: 20px;
+        border: 1px solid #09046A;
+    }
+    .item-md{
+        padding-left: 10px;
+        padding-right: 0;
+    }
+    .item-md.item-block .item-inner{
+        padding-right: 0;
+    }
+    ion-input{
+        border-radius: 25px;
+        background-color: #fff;
+    }
 }

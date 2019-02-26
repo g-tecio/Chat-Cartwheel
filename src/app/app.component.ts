@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, LoadingController } from 'ionic-angular';
+import { Platform, LoadingController, App} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -7,16 +7,20 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { IndexPage } from '../pages/index';
 import { AuthProvider } from '../providers/auth/auth';
 
+import { ContactsPage } from './../pages/contacts/contacts';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+
   rootPage:any = IndexPage;
 
   constructor(
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
+    public app: App,
     private auth: AuthProvider,
     public loadingCtrl: LoadingController
     ) {
@@ -44,5 +48,9 @@ export class MyApp {
     }, (err) => {
       console.log('Log-Out', err);
     })
+  }
+
+  toContacts(){
+    this.app.getActiveNav().push(ContactsPage);
   }
 }

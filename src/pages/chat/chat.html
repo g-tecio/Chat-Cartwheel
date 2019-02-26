@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="cartwheel">
     <ion-title>Chat</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content #content>
   <div class="chatWindow">
     <ion-list *ngIf="user" no-lines>
       <ion-item *ngFor="let item of allMessages | async" text-wrap>
@@ -13,8 +13,8 @@
             <img class="center" *ngIf="item.image" [src]="item.image"/>
             <img class="center" *ngIf="!item.image" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
-          <div class="myBubble">
-            <h4>{{item.message}}</h4>
+          <div class="youBubble">
+            <p>{{item.message}}</p>
           </div>
         </ion-item>
         <ion-item *ngIf="item.sentBy === user">
@@ -22,8 +22,8 @@
             <img class="center" *ngIf="item.image" [src]="item.image"/>
             <img class="center" *ngIf="!item.image" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
-          <div class="youBubble">
-            <h4>{{item.message}}</h4>
+          <div class="myBubble">
+            <p>{{item.message}}</p>
           </div>
         </ion-item>
       </ion-item>
@@ -32,11 +32,11 @@
 </ion-content>
 
 <ion-footer ion-fixed>
-  <ion-toolbar class="no-border" color="white">
+  <ion-toolbar class="no-border" color="cartwheel">
     <ion-input [(ngModel)]="newMessage" placeholder="Type a message..."></ion-input>
     <ion-buttons end>
-      <button ion-button (click)="addMessage()">
-        <ion-icon name="send" color="primary" style="font-size: 20px;"></ion-icon>
+      <button ion-fab mini (click)="addMessage()" color="cartwheel-second">
+        <ion-icon name="send" style="font-size: 20px;"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>

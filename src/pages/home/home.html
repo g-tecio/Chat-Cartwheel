@@ -1,11 +1,6 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="cartwheel">
     <ion-title>Chats</ion-title>
-    <ion-buttons end>
-        <button ion-button id="person-icon" (click)="openContacts()">
-          <ion-icon name="person-add"></ion-icon>
-        </button>
-      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -19,4 +14,9 @@
       <h2>{{chat.recipient_id}}</h2>
     </ion-item>
   </ion-list>
+  <ion-fab bottom right>
+    <button ion-fab (click)="openContacts()" color="cartwheel-second">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
