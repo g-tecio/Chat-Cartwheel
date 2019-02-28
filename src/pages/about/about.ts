@@ -11,7 +11,10 @@ export class AboutPage {
     public navCtrl: NavController,
     public menuCtrl: MenuController
     ) {
-      this.menuCtrl.enable(false, 'myMenu');
+  }
+
+  ionViewDidEnter(){
+    this.menuCtrl.enable(false, 'myMenu');
   }
 
 }

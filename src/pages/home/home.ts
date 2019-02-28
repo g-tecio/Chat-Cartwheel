@@ -5,7 +5,7 @@ import { NavController, MenuController } from 'ionic-angular';
 import { ContactsPage } from './../contacts/contacts';
 
 import { ChatProvider } from './../../providers/chat/chat';
-import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -22,13 +22,16 @@ export class HomePage {
     public menuCtrl: MenuController,
     public chatProvider: ChatProvider
     ) {
-      this.menuCtrl.enable(false, 'myMenu')
       this.chatProvider.getChats().subscribe(chat => {
         console.log(chat);
         this.chats = chat[1].slice();
         this.chats = this.chats.concat(chat[0]);
       });
 
+  }
+
+  ionViewDidEnter(){
+    this.menuCtrl.enable(false, 'myMenu');
   }
 
   openContacts(){

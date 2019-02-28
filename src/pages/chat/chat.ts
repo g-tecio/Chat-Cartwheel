@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, MenuController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 
 import * as firebase from 'firebase/app';
@@ -22,6 +22,7 @@ export class ChatPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public menuCtrl: MenuController,
     public chatProvider: ChatProvider,
     ) {
       this.user = firebase.auth().currentUser.uid;
@@ -44,6 +45,10 @@ export class ChatPage {
     setTimeout(() => {
       this.content.scrollToBottom();
     }, 1000);
+  }
+
+  ionViewDidEnter(){
+    this.menuCtrl.enable(false, 'myMenu');
   }
 
 }

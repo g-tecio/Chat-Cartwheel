@@ -8,9 +8,11 @@ page-chat {
     .youBubble p{
         float: left;
         padding: 12px 10px;
-        background-color: #fff;
-        color: #000;
-        border-radius: 20px;
+        background-color: #FF4F00;
+        color: #fff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
         border: 1px solid #FF4F00;
     }
     .myBubble {
@@ -19,9 +21,11 @@ page-chat {
     .myBubble p{
         float: right;
         padding: 12px 10px;
-        background-color: #fff;
-        color: #000;
-        border-radius: 20px;
+        background-color: #09046A;
+        color: #fff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
         border: 1px solid #09046A;
     }
     .item-md{

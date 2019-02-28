@@ -3,8 +3,8 @@ page-profile {
         font-size: 20px;
     }
     #card_content{
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-radius: 20px;
+        border: 1px solid #FF4F00;
     }
     .center{
         display: block;
@@ -13,9 +13,13 @@ page-profile {
         max-width: 250px;
         max-height: 250px;
         border-radius: 125px;
+        border: 1px solid #FF4F00;
     }
     ion-avatar{
         padding-top: 20px;
+    }
+    #username-title{
+        text-align: center;
     }
     #input-icon{
         padding-right: 5px;

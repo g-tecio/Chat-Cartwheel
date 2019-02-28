@@ -23,7 +23,6 @@ export class ContactsPage {
     public chatProvider: ChatProvider
     ) {
       this.currentUser = this.authService.afAuth.auth.currentUser.email;
-      this.menuCtrl.enable(false, 'myMenu')
 
       this.authService.getAllUser().then((res: any) => {
         this.filteredUsers = res;
@@ -31,8 +30,8 @@ export class ContactsPage {
       })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactsPage');
+  ionViewDidEnter(){
+    this.menuCtrl.enable(false, 'myMenu');
   }
 
   searchUser(searchBar){

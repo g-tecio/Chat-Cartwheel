@@ -24,24 +24,25 @@ export class ProfilePage {
     public db: AngularFirestore,
     public menuCtrl: MenuController
     ) {
-      this.authService.afAuth.authState.subscribe(user =>{
-        if(user){
-          this.db.collection<any>('users', ref => ref.where('email', '==', user.email)).snapshotChanges().pipe(
-            map(actions => actions.map(a => {
-              const data = a.payload.doc.data() as any;
-              const id = a.payload.doc.id;
-              return { id, ...data };
-            }))
-          ).subscribe(userList => {
-            this.user = userList[0];
-          })
-        }
-      })
+    this.authService.afAuth.authState.subscribe(user =>{
+      if(user){
+        this.db.collection<any>('users', ref => ref.where('email', '==', user.email)).snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+            const data = a.payload.doc.data() as any;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          }))
+        ).subscribe(userList => {
+          this.user = userList[0];
+        })
+      }
+    })
   }
 
-  ionViewWillEnter(){
+  ionViewDidEnter(){
     this.menuCtrl.enable(true, 'myMenu');
   }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
