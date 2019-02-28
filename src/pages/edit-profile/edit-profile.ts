@@ -6,7 +6,7 @@ import { ProfilePage } from './../profile/profile';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/';
 
 
 
@@ -40,8 +40,10 @@ export class EditProfilePage {
       quality: 70,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.CAMERA,
     }
+
     this.camera.getPicture(options).then((imageData) => {
       this.userPicture = 'data:image/jpeg;base64' + imageData;
     }, (err) => {
