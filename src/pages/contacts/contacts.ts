@@ -27,12 +27,6 @@ export class ContactsPage {
     public chatProvider: ChatProvider
     ) {
       this.currentUser = this.authService.afAuth.auth.currentUser.email;
-
-      /* this.getAllUser().then((res: any) => {
-        this.filteredUsers = res;
-        this.temparr = res;
-      }) */
-
       this.db.collection<any>('users').snapshotChanges().pipe(
         map(actions => actions.map(a => {
           const data = a.payload.doc.data() as any;
@@ -66,20 +60,6 @@ export class ContactsPage {
   openChat(contact){
     this.chatProvider.initializeChat(contact);
     //this.navCtrl.push(ChatPage);
-  }
-
-  getAllUser(){
-    return new Promise((resolve) => {
-      this.db.collection<any>('users').snapshotChanges().pipe(
-        map(actions => actions.map(a => {
-          const data = a.payload.doc.data() as any;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        }))
-      ).subscribe(userList => {
-         resolve(userList)
-      })
-    })
   }
 
 }

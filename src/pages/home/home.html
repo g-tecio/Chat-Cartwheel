@@ -1,18 +1,25 @@
 <ion-header>
   <ion-navbar color="cartwheel">
-    <ion-title>Chats</ion-title>
+    <ion-title>Lynx</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let chat of chats" (click)="openChat(chat)">
-      <ion-avatar *ngIf="chat.user" item-left>
-        <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture"/>
-        <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png"/>
-      </ion-avatar>
-      <h2 *ngIf="chat.user">{{chat.user.username}}</h2>
-    </ion-item>
+    <ion-item-sliding *ngFor="let chat of chats">
+      <ion-item>
+        <ion-avatar *ngIf="chat.user" item-left>
+          <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture"/>
+          <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png"/>
+        </ion-avatar>
+        <h2 *ngIf="chat.user" (click)="openChat(chat)">{{chat.user.username}}</h2>
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
   <ion-fab bottom right>
     <button ion-fab (click)="openContacts()" color="cartwheel-second">

@@ -43,11 +43,7 @@ export class HomePage {
         });
       })
       this.chats_ready = true;
-
     });
-
-    
-
   }
 
   ionViewDidEnter() {

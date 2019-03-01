@@ -7,7 +7,6 @@
 
 <ion-content padding>
   <ion-searchbar (input)="searchUser($event)" placeholder="Search..."></ion-searchbar>
-  <ion-list no-lines>
     <ion-list>
       <ion-item-sliding *ngFor="let user of filteredUsers">
         <ion-item *ngIf="user.email != currentUser">
@@ -25,5 +24,4 @@
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
-  </ion-list>
 </ion-content>
