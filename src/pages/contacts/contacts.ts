@@ -28,9 +28,20 @@ export class ContactsPage {
     ) {
       this.currentUser = this.authService.afAuth.auth.currentUser.email;
 
-      this.getAllUser().then((res: any) => {
+      /* this.getAllUser().then((res: any) => {
         this.filteredUsers = res;
         this.temparr = res;
+      }) */
+
+      this.db.collection<any>('users').snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as any;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      ).subscribe(userList => {
+         this.filteredUsers = userList.slice();
+         this.temparr = userList.slice();
       })
   }
 

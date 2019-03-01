@@ -6,21 +6,21 @@
 
 <ion-content #content>
   <div class="chatWindow">
-    <ion-list *ngIf="user" no-lines>
+    <ion-list *ngIf="user_id && recipient" no-lines>
       <ion-item *ngFor="let item of allMessages | async" text-wrap>
-        <ion-item *ngIf="item.sentBy != user">
+        <ion-item *ngIf="item.sentBy != user_id">
           <ion-avatar item-left>
-            <img class="center" *ngIf="item.profile_picture" [src]="item.profile_picture"/>
-            <img class="center" *ngIf="!item.profile_picture" src="assets/imgs/profile/profile.png"/>
+            <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture"/>
+            <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
           <div class="youBubble">
             <p>{{item.message}}</p>
           </div>
         </ion-item>
-        <ion-item *ngIf="item.sentBy === user">
+        <ion-item *ngIf="item.sentBy === user_id">
           <ion-avatar item-right>
-            <img class="center" *ngIf="item.profile_picture" [src]="item.profile_picture"/>
-            <img class="center" *ngIf="!item.profile_picture" src="assets/imgs/profile/profile.png"/>
+            <img class="center" *ngIf="user.profile_picture" [src]="user.profile_picture"/>
+            <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
           <div class="myBubble">
             <p>{{item.message}}</p>
@@ -35,7 +35,7 @@
   <ion-toolbar class="no-border" color="cartwheel">
     <ion-input [(ngModel)]="newMessage" placeholder="Type a message..."></ion-input>
     <ion-buttons end>
-      <button ion-fab mini (click)="addMessage()" color="cartwheel-second">
+      <button [disabled]="!newMessage" ion-fab mini (click)="addMessage()" color="cartwheel-second">
         <ion-icon name="send" style="font-size: 20px;"></ion-icon>
       </button>
     </ion-buttons>
