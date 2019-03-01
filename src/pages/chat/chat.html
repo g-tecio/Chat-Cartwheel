@@ -10,8 +10,8 @@
       <ion-item *ngFor="let item of allMessages | async" text-wrap>
         <ion-item *ngIf="item.sentBy != user">
           <ion-avatar item-left>
-            <img class="center" *ngIf="item.image" [src]="item.image"/>
-            <img class="center" *ngIf="!item.image" src="assets/imgs/profile/profile.png"/>
+            <img class="center" *ngIf="item.profile_picture" [src]="item.profile_picture"/>
+            <img class="center" *ngIf="!item.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
           <div class="youBubble">
             <p>{{item.message}}</p>
@@ -19,8 +19,8 @@
         </ion-item>
         <ion-item *ngIf="item.sentBy === user">
           <ion-avatar item-right>
-            <img class="center" *ngIf="item.image" [src]="item.image"/>
-            <img class="center" *ngIf="!item.image" src="assets/imgs/profile/profile.png"/>
+            <img class="center" *ngIf="item.profile_picture" [src]="item.profile_picture"/>
+            <img class="center" *ngIf="!item.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
           <div class="myBubble">
             <p>{{item.message}}</p>

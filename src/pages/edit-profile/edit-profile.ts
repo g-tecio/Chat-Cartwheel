@@ -62,7 +62,7 @@ export class EditProfilePage {
 
   getImage(){
     const options: CameraOptions = {
-      quality: 20,
+      quality: 80,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       targetWidth: 250,
