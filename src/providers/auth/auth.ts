@@ -3,7 +3,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from "@angular/core";
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/toPromise';
-import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -55,19 +54,5 @@ export class AuthProvider {
             reject();
         }
     });
-  }
-
-  getAllUser(){
-    return new Promise((resolve) => {
-      this.db.collection<any>('users').snapshotChanges().pipe(
-        map(actions => actions.map(a => {
-          const data = a.payload.doc.data() as any;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        }))
-      ).subscribe(userList => {
-         resolve(userList)
-      })
-    })
   }
 }

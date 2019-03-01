@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { map } from 'rxjs/operators';
+
 import { AuthProvider } from './../../providers/auth/auth';
 import { ChatProvider } from './../../providers/chat/chat';
-import { ChatPage } from '../chat/chat';
+
 
 @IonicPage()
 @Component({
@@ -18,13 +21,14 @@ export class ContactsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public db: AngularFirestore,
     public authService: AuthProvider,
     public menuCtrl: MenuController,
     public chatProvider: ChatProvider
     ) {
       this.currentUser = this.authService.afAuth.auth.currentUser.email;
 
-      this.authService.getAllUser().then((res: any) => {
+      this.getAllUser().then((res: any) => {
         this.filteredUsers = res;
         this.temparr = res;
       })
@@ -51,6 +55,20 @@ export class ContactsPage {
   openChat(contact){
     this.chatProvider.initializeChat(contact);
     //this.navCtrl.push(ChatPage);
+  }
+
+  getAllUser(){
+    return new Promise((resolve) => {
+      this.db.collection<any>('users').snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as any;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      ).subscribe(userList => {
+         resolve(userList)
+      })
+    })
   }
 
 }

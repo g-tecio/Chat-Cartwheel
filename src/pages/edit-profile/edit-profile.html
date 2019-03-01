@@ -12,8 +12,8 @@
 <ion-content padding>
     <ion-list *ngIf="user">
       <ion-avatar>
-        <img class="center" *ngIf="user.image" [src]="user.image"/>
-        <img class="center" *ngIf="!user.image" src="assets/imgs/profile/profile.png"/>
+        <img class="center" *ngIf="user.profile_picture" src="{{user.profile_picture}}"/>
+        <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
       </ion-avatar>
       <button ion-button block type="button" color="light" color="cartwheel-second" (click)="openSheetCamera()"><ion-icon name="camera" id="icon-camera"></ion-icon> Change photo</button>
       <ion-item>

@@ -6,11 +6,7 @@ import { ProfilePage } from './../profile/profile';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 
-import { Camera, CameraOptions } from '@ionic-native/camera/';
-
-
-
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
@@ -37,15 +33,28 @@ export class EditProfilePage {
 
   takePhoto(){
     const options: CameraOptions = {
-      quality: 70,
+      quality: 20,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      targetWidth: 250,
+      targetHeight: 250,
+      saveToPhotoAlbum: true,
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.userPicture = 'data:image/jpeg;base64' + imageData;
+      const refStorage = this.storage.ref(`ProfileImages/${this.user.id}`);
+      refStorage.putString(imageData, 'base64', { contentType: 'image/jpeg' }).then((imageURL) => {
+        imageURL.ref.getDownloadURL().then(imgURL => {
+          console.log(imgURL);
+          this.user.profile_picture = imgURL;
+          this.db.doc<any>('users/' + this.user.id).update({
+            profile_picture: imgURL
+          })
+        }) 
+      });
     }, (err) => {
       console.log(err);
     })
@@ -53,14 +62,25 @@ export class EditProfilePage {
 
   getImage(){
     const options: CameraOptions = {
-      quality: 70,
+      quality: 20,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum: false,
+      targetWidth: 250,
+      targetHeight: 250,
+      allowEdit: true,
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.userPicture = 'data:image/jpeg;base64' + imageData;
+      const refStorage = this.storage.ref(`ProfileImages/${this.user.id}`);
+      refStorage.putString(imageData, 'base64', { contentType: 'image/jpeg' }).then((imageURL) => {
+        imageURL.ref.getDownloadURL().then(imgURL => {
+          console.log(imgURL);
+          this.user.profile_picture = imgURL;
+          this.db.doc<any>('users/' + this.user.id).update({
+            profile_picture: imgURL
+          })
+        }) 
+      });
     }, (err) => {
       console.log(err);
     })
