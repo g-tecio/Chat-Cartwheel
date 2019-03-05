@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, MenuController, ActionSheetController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 
 import * as firebase from 'firebase/app';
@@ -26,6 +26,7 @@ export class ChatPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public menuCtrl: MenuController,
+    public actionSheetCtrl: ActionSheetController,
     public chatProvider: ChatProvider,
     private firestore: AngularFirestore
     ) {
@@ -64,4 +65,19 @@ export class ChatPage {
     this.menuCtrl.enable(false, 'myMenu');
   }
 
+  openSheetProfile(){
+    const actionSheet = this.actionSheetCtrl.create({
+      title: `${this.recipient.username}`,
+      buttons: [
+        {
+          text: 'View Profile',
+          icon: 'person',
+          handler: () => {
+
+          }
+        }
+      ]
+    })
+    actionSheet.present();
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, MenuController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegisterPage } from '../register/register';
 import { AuthProvider } from './../../providers/auth/auth';
@@ -26,7 +26,6 @@ export class LoginPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    private alertControl: AlertController,
     public authService: AuthProvider,
     public menuCtrl: MenuController,
     public loadingCtrl: LoadingController

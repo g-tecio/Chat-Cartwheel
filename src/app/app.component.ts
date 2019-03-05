@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, LoadingController, App} from 'ionic-angular';
+import { Platform, LoadingController, App, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -21,6 +21,7 @@ export class MyApp {
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
     public app: App,
+    public modalCtrl: ModalController,
     private auth: AuthProvider,
     public loadingCtrl: LoadingController
     ) {
@@ -50,7 +51,7 @@ export class MyApp {
     })
   }
 
-  toContacts(){
+  toContacts() {
     this.app.getActiveNav().push(ContactsPage);
   }
 }

@@ -1,10 +1,22 @@
 <ion-header>
-  <ion-navbar color="cartwheel">
-    <ion-title>Lynx</ion-title>
+  <ion-navbar color="cartwheel" [hidden]="showSearchbar">
+    <ion-title>
+      Lynx
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="toggleHome()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
+  <ion-toolbar *ngIf="showSearchbar" color="cartwheel">
+    <ion-searchbar [animated]="true" [showCancelButton]="showSearchbar" placeholder="Search..." (ionCancel)="showSearchbar=false"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding #contentHome>
   <ion-list>
     <ion-item-sliding *ngFor="let chat of chats">
       <ion-item>
@@ -15,7 +27,7 @@
         <h2 *ngIf="chat.user" (click)="openChat(chat)">{{chat.user.username}}</h2>
       </ion-item>
       <ion-item-options slide="left">
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="chatAlert()">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

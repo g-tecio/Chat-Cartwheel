@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, MenuController, Content, ViewController } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 
@@ -17,10 +17,13 @@ export class ContactsPage {
   temparr = [];
   filteredUsers = [];
   currentUser:any;
+  showSearchbar: boolean = false;
+  @ViewChild('content') content: Content;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private view: ViewController,
     public db: AngularFirestore,
     public authService: AuthProvider,
     public menuCtrl: MenuController,
@@ -41,6 +44,11 @@ export class ContactsPage {
 
   ionViewDidEnter(){
     this.menuCtrl.enable(false, 'myMenu');
+  }
+
+  toggleBar(){
+    this.showSearchbar = !this.showSearchbar;
+    this.content.resize();
   }
 
   searchUser(searchBar){

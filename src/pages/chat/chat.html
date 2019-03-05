@@ -1,6 +1,13 @@
 <ion-header>
   <ion-navbar color="cartwheel">
-    <ion-title>Chat</ion-title>
+    <ion-title *ngIf="recipient">
+      {{recipient.username}}
+    </ion-title>
+    <ion-buttons end id="buttons_chat">
+      <button ion-button id="person-icon" (click)="openSheetProfile()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -13,7 +20,7 @@
             <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture"/>
             <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
-          <div class="youBubble">
+          <div class="youBubble" >
             <p>{{item.message}}</p>
           </div>
         </ion-item>

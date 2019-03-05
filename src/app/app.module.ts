@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 import { IndexPage } from '../pages/index';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from './../pages/login/login';
-import { AboutPage } from '../pages/about/about';
+import { GroupPage } from './../pages/group/group';
 import { ProfilePage } from './../pages/profile/profile';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { HomePage } from '../pages/home/home';
@@ -35,7 +35,7 @@ import { ChatProvider } from '../providers/chat/chat';
     IndexPage,
     LoginPage,
     RegisterPage,
-    AboutPage,
+    GroupPage,
     ProfilePage,
     EditProfilePage,
     HomePage,
@@ -56,7 +56,7 @@ import { ChatProvider } from '../providers/chat/chat';
     IndexPage,
     LoginPage,
     RegisterPage,
-    AboutPage,
+    GroupPage,
     ProfilePage,
     EditProfilePage,
     HomePage,

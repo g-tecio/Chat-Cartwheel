@@ -39,11 +39,10 @@ export class ProfilePage {
     })
   }
 
-  ionViewDidEnter(){
+  ionViewWillEnter(){
     this.menuCtrl.enable(true, 'myMenu');
   }
   
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }

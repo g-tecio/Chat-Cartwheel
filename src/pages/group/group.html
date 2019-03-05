@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="cartwheel" [hidden]="showSearchbar">
+    <ion-title>
+      Groups
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="toggleGroups()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar *ngIf="showSearchbar" color="cartwheel">
+    <ion-searchbar [animated]="true" [showCancelButton]="showSearchbar" placeholder="Search..." (ionCancel)="showSearchbar=false"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding #contentGroups>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card id="card_content">
+          <ion-avatar>
+              <img class="center" src="assets/imgs/profile/profile.png"/>
+          </ion-avatar>
+          <ion-card-title id="group-title">
+              Title Group
+          </ion-card-title>
+          <ion-row class="cardfooter">
+            <ion-col col-12>
+              <p><ion-icon name="contacts"></ion-icon> Members</p>
+            </ion-col>
+            <ion-col col-3>
+              <img class="img_member" src="assets/imgs/profile/profile.png"/>
+            </ion-col>
+            <ion-col col-3>
+              <img class="img_member" src="assets/imgs/profile/profile.png"/>
+            </ion-col>
+            <ion-col col-3>
+              <img class="img_member" src="assets/imgs/profile/profile.png"/>
+            </ion-col>
+            <ion-col col-3>
+              <img class="img_member" src="assets/imgs/profile/profile.png"/>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card id="card_content" (click)="createNewGroup()">
+          <ion-fab center id="fab-button">
+            <button ion-fab color="cartwheel-second">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-fab>
+          <ion-card-title id="group-title">
+            New Group
+          </ion-card-title>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

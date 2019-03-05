@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 
-import { AboutPage } from '../about/about';
+import { GroupPage } from './../group/group';
 import { ProfilePage } from '../profile/profile';
 import { HomePage } from '../home/home';
 
@@ -16,7 +16,7 @@ export class TabsPage {
   page = 0;
 
   tab1Root = HomePage;
-  tab2Root = AboutPage;
+  tab2Root = GroupPage;
   tab3Root = ProfilePage;
 
   constructor() {

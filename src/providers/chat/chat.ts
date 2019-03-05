@@ -68,4 +68,11 @@ export class ChatProvider {
     return combineLatest(recipientRef, userRef);
   }
 
+  deleteChat(){
+    this.db.collection<any>('chats').doc('recipient_id').delete().then(() => {
+      console.log('Document deleted');
+    }).catch((err) => {
+      console.error('Error removing document', err);
+    });
+  }
 }

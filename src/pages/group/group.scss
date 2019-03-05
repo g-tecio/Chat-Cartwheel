@@ -1,0 +1,64 @@
+page-group {
+    #person-icon{
+        font-size: 20px;
+    }
+    .searchbar-md .searchbar-input{
+        background-color: #09046A;
+        color: #fff;
+    }
+    .toolbar .searchbar-md .searchbar-md-cancel{
+        font-size: 20px;
+        left: 0px;
+        color: #fff;
+    }
+    .searchbar-ios {
+        background-color: #09046A;
+        color: #fff;
+    }
+    .searchbar-md .searchbar-md-cancel{
+        display: inline-flex !important;
+        color: #fff;
+    }
+    .searchbar-md .searchbar-search-icon{
+        display: none;
+    }
+    #group-title{
+        text-align: center;
+        color: #FF4F00;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+    #fab-button{
+        top: 45%;
+    }
+    #card_content{
+        border-radius: 20px;
+        border: 1px solid #FF4F00;
+        height: 100%;
+    }
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 75px;
+        max-height: 75px;
+        border-radius: 125px;
+        border: 1px solid #FF4F00;
+    }
+    .img_member{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 25px;
+        max-height: 25px;
+        border-radius: 125px;
+        border: 1px solid #FF4F00;
+    }
+    ion-avatar{
+        padding-top: 10px;
+    }
+    .cardfooter p{
+        color: #FF4F00;
+        text-align: center;
+    }
+}

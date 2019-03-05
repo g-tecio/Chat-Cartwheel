@@ -1,8 +1,8 @@
-import { ChatPage } from './../chat/chat';
-import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, MenuController, AlertController, Content, ModalController } from 'ionic-angular';
 
 import { ContactsPage } from './../contacts/contacts';
+import { ChatPage } from './../chat/chat';
 
 import { ChatProvider } from './../../providers/chat/chat';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -18,14 +18,18 @@ import firebase from 'firebase';
 export class HomePage {
 
   chats: Array<any>;
-  allChats = [];
-  recipient: any;
   user_id: any;
   chats_ready: boolean = false;
+  recipient: any;
+  showSearchbar: boolean = false;
+  @ViewChild('contentHome') content: Content;
+  
 
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     public chatProvider: ChatProvider,
     private firestore: AngularFirestore
   ) {
@@ -39,7 +43,7 @@ export class HomePage {
         let user_recipient = (chat.recipient_id == this.user_id) ? chat.user_id : chat.recipient_id;
   
         this.firestore.collection('users/', ref => ref.where('id_user', '==', user_recipient)).valueChanges().subscribe(res => {
-          chat.user = res[0];
+          this.recipient = chat.user = res[0];
         });
       })
       this.chats_ready = true;
@@ -50,15 +54,49 @@ export class HomePage {
     this.menuCtrl.enable(false, 'myMenu');
   }
 
+  ionViewDidLeave(){
+    this.showSearchbar = false;
+  }
+
   openContacts() {
-    this.navCtrl.push(ContactsPage)
+    this.navCtrl.push(ContactsPage);
   }
 
   openChat(_chat) {
     console.log(_chat)
+    this.showSearchbar = false;
     this.navCtrl.push(ChatPage, {
       _chat: _chat
     })
+  }
+
+  deleteChatHome(){
+    this.chatProvider.deleteChat();
+  }
+
+  toggleHome(){
+    this.showSearchbar = !this.showSearchbar;
+    this.content.resize();
+  }
+
+  chatAlert(){
+    const alertChat = this.alertCtrl.create({
+      title: 'Are you want to delete this chat?',
+      message: `Delete chat with ${this.recipient.username}`,
+      buttons: [
+        {
+          text: 'Disagree',
+          role: 'cancel'
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.deleteChatHome();
+          }
+        }
+      ]
+    })
+    alertChat.present();
   }
 
 }

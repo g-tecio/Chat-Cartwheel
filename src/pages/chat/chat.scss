@@ -1,6 +1,9 @@
 page-chat {
+    #buttons_chat{
+        padding-right: 5px;
+    }
     #person-icon{
-        font-size: 20px;
+        font-size: 25px;
     }
     .youBubble {
         display: inline;
@@ -38,5 +41,11 @@ page-chat {
     ion-input{
         border-radius: 25px;
         background-color: #fff;
+    }
+    .toolbar-content-ios{
+        margin-left: 5px;
+    }
+    .text-input-ios{
+        margin-left: 10px;
     }
 }
