@@ -70,8 +70,8 @@ export class HomePage {
     })
   }
 
-  deleteChatHome(){
-    this.chatProvider.deleteChat();
+  deleteChatHome(_chat){
+    this.chatProvider.deleteChat(_chat);
   }
 
   toggleHome(){
@@ -81,10 +81,10 @@ export class HomePage {
     }
   }
 
-  chatAlert(){
+  chatAlert(_chat){
     const alertChat = this.alertCtrl.create({
       title: 'Are you want to delete this chat?',
-      message: `Delete chat with ${this.recipient.username}`,
+      message: `Delete chat with ${_chat.user.username}`,
       buttons: [
         {
           text: 'Disagree',
@@ -93,7 +93,7 @@ export class HomePage {
         {
           text: 'Agree',
           handler: () => {
-            this.deleteChatHome();
+            this.deleteChatHome(_chat);
           }
         }
       ]
