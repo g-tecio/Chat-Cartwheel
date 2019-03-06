@@ -27,7 +27,7 @@
         <h2 *ngIf="chat.user" (click)="openChat(chat)">{{chat.user.username}}</h2>
       </ion-item>
       <ion-item-options slide="left">
-        <button ion-button color="danger" (click)="chatAlert()">
+        <button ion-button color="danger" (click)="chatAlert(chat)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

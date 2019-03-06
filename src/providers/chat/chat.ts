@@ -68,9 +68,20 @@ export class ChatProvider {
     return combineLatest(recipientRef, userRef);
   }
 
-  deleteChat(){
-    this.db.collection<any>('chats').doc('recipient_id').delete().then(() => {
-      console.log('Document deleted');
+  deleteChat(_chat){
+    this.db.collection<any>('chats').doc(_chat.id).delete().then(() => {
+      console.log('Chat deleted');
+      this.db.collection('messages', ref => ref.where('chat_id', '==', _chat.id)).snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as any;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      ).subscribe(messages => {
+        messages.forEach(message => {
+          this.db.collection('messages').doc(message.id).delete().catch((e) => console.log(e.message));
+        });
+      });
     }).catch((err) => {
       console.error('Error removing document', err);
     });
