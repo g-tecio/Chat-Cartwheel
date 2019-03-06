@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, Content, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Content, Platform } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 
@@ -23,8 +23,8 @@ export class ContactsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private view: ViewController,
     public db: AngularFirestore,
+    public platform: Platform,
     public authService: AuthProvider,
     public menuCtrl: MenuController,
     public chatProvider: ChatProvider
@@ -48,7 +48,9 @@ export class ContactsPage {
 
   toggleBar(){
     this.showSearchbar = !this.showSearchbar;
-    this.content.resize();
+    if(this.platform.is('ios')){
+      this.content.resize();
+    }
   }
 
   searchUser(searchBar){

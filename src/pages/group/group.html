@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="cartwheel" [hidden]="showSearchbar">
+  <ion-navbar color="cartwheel" [hidden]="showSearchbar && platform.is('android')">
     <ion-title>
       Groups
     </ion-title>
@@ -12,7 +12,7 @@
   </ion-navbar>
 
   <ion-toolbar *ngIf="showSearchbar" color="cartwheel">
-    <ion-searchbar [animated]="true" [showCancelButton]="showSearchbar" placeholder="Search..." (ionCancel)="showSearchbar=false"></ion-searchbar>
+    <ion-searchbar [animated]="true" [showCancelButton]="showSearchbar" placeholder="Search..." (ionCancel)="toggleGroups()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 

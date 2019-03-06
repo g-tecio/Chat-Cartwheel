@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, MenuController, AlertController, Content, ModalController } from 'ionic-angular';
+import { NavController, MenuController, AlertController, Content, Platform } from 'ionic-angular';
 
 import { ContactsPage } from './../contacts/contacts';
 import { ChatPage } from './../chat/chat';
@@ -29,7 +29,7 @@ export class HomePage {
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public alertCtrl: AlertController,
-    public modalCtrl: ModalController,
+    public platform: Platform,
     public chatProvider: ChatProvider,
     private firestore: AngularFirestore
   ) {
@@ -76,7 +76,9 @@ export class HomePage {
 
   toggleHome(){
     this.showSearchbar = !this.showSearchbar;
-    this.content.resize();
+    if(this.platform.is('ios')){
+      this.content.resize();
+    }
   }
 
   chatAlert(){

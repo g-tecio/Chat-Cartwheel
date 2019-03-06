@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, MenuController, Content } from 'ionic-angular';
+import { NavController, MenuController, Content, Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-group',
@@ -12,7 +12,8 @@ export class GroupPage {
 
   constructor(
     public navCtrl: NavController,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    public platform: Platform
     ) {
   }
 
@@ -30,7 +31,9 @@ export class GroupPage {
 
   toggleGroups(){
     this.showSearchbar = !this.showSearchbar;
-    this.content.resize();
+    if(this.platform.is('ios')){
+      this.content.resize();
+    }
   }
 
 }
