@@ -12,13 +12,13 @@
   </ion-navbar>
 
   <ion-toolbar *ngIf="showSearchbar" color="cartwheel">
-    <ion-searchbar [animated]="true" [showCancelButton]="showSearchbar" placeholder="Search..." (ionCancel)="toggleHome()"></ion-searchbar>
+    <ion-searchbar (ionInput)="searchChat($event)" [animated]="true" [showCancelButton]="showSearchbar" placeholder="Search..." (ionCancel)="toggleHome()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding #contentHome>
   <ion-list>
-    <ion-item-sliding *ngFor="let chat of chats">
+    <ion-item-sliding *ngFor="let chat of filteredChats">
       <ion-item>
         <ion-avatar *ngIf="chat.user" item-left>
           <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture"/>

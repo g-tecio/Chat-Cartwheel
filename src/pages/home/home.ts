@@ -22,6 +22,8 @@ export class HomePage {
   chats_ready: boolean = false;
   recipient: any;
   showSearchbar: boolean = false;
+  temparr: Array<any> = [];
+  filteredChats: Array<any> = [];
   @ViewChild('contentHome') content: Content;
   
 
@@ -38,7 +40,8 @@ export class HomePage {
       console.log(chat);
       this.chats = chat[1].slice();
       this.chats = this.chats.concat(chat[0]);
-
+      this.filteredChats = this.chats.slice();
+      this.temparr = this.chats.slice();
       this.chats.forEach(chat => {
         let user_recipient = (chat.recipient_id == this.user_id) ? chat.user_id : chat.recipient_id;
   
@@ -99,6 +102,20 @@ export class HomePage {
       ]
     })
     alertChat.present();
+  }
+
+  searchChat(searchBar){
+    this.filteredChats = this.temparr;
+    var q = searchBar.target.value;
+    if(q.trim() == ''){
+      return;
+    }
+    this.filteredChats = this.filteredChats.filter((v) => {
+      if(v.user.username.toLowerCase().indexOf(q.toLowerCase()) > -1){
+        return true;
+      }
+      return false; 
+    })
   }
 
 }
