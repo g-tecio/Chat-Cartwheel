@@ -4,20 +4,20 @@ page-index {
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
-    #card-content{
-        height: 50%;
-        margin-top: 50%;
-		border-radius: 20px;
-		border: 1px solid #FF4F00;
-    }
 	.title_content{
 		padding-top: 25%;
+		padding-bottom: 50%;
 	}
 	#title_top{
 		text-align: center;
 	}
+	h4{
+		text-align: center;
+		color: #fff;
+	}
 	p{
 		text-align: center;
+		color: #fff;
 	}
 	ion-icon{
 		padding-right: 5px;

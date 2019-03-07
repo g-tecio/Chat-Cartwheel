@@ -58,7 +58,7 @@ export class RegisterPage {
       this.authService.doRegister(value)
       .then(res => {
         this.errorMessage = "";
-        this.successMessage = "Your account has been created successfully";
+        this.successMessage = "Your account has been created successfully", res;
         loader.dismiss();
       }, err => {
         this.errorMessage = err.message;

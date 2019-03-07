@@ -21,6 +21,7 @@ export class ChatPage {
   chat: any;
   allMessages:Observable<any>;
   recipient: any;
+  showProfile: boolean = true;
 
   constructor(
     public navCtrl: NavController, 
@@ -53,6 +54,10 @@ export class ChatPage {
       this.newMessage = '';
       this.content.scrollToBottom();
     })
+  }
+
+  ionViewWillLeave(){
+    this.showProfile = false;
   }
 
   scrollTo(){

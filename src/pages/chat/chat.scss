@@ -1,9 +1,34 @@
 page-chat {
+    #item-profile .label-md{
+        margin: 0;
+    }
+    #item-profile .label-ios{
+        margin: 0;
+    }
+    #item-profile{
+        padding-left: 10px;
+        height: 0;
+    }
+    #item-profile h2{
+        color: #fff;
+    }
+    .item-md.item-block .item-inner{
+        border-bottom: 0;
+    }
+    .item-ios.item-block .item-inner{
+        border-bottom: 0;
+    }
     #buttons_chat{
         padding-right: 5px;
     }
     #person-icon{
         font-size: 25px;
+    }
+    #item-bubble .label-md{
+        margin: 5px 8px 5px 0px;
+    }
+    #item-bubble .label-ios{
+        margin: 5px 8px 5px 0px;
     }
     .youBubble {
         display: inline;
@@ -11,12 +36,13 @@ page-chat {
     .youBubble p{
         float: left;
         padding: 12px 10px;
-        background-color: #FF4F00;
+        background-image: url('../assets/imgs/background/background_second.png');
+        background-repeat: no-repeat;
+        background-size: cover;
         color: #fff;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
-        border: 1px solid #FF4F00;
     }
     .myBubble {
         display: inline; 
@@ -24,18 +50,26 @@ page-chat {
     .myBubble p{
         float: right;
         padding: 12px 10px;
-        background-color: #09046A;
+        background-image: url('../assets/imgs/background/background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
         color: #fff;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         border-bottom-left-radius: 20px;
-        border: 1px solid #09046A;
     }
     .item-md{
         padding-left: 10px;
         padding-right: 0;
     }
+    .item-ios{
+        padding-left: 10px;
+        padding-right: 0;
+    }
     .item-md.item-block .item-inner{
+        padding-right: 0;
+    }
+    .item-ios.item-block .item-inner{
         padding-right: 0;
     }
     ion-input{

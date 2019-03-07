@@ -3,20 +3,17 @@ page-login {
 		background-image: url('../assets/imgs/background/background.png');
 		background-repeat: no-repeat;
 		background-size: cover;
-	}
-    #card-content{
-        border-radius: 20px;
-        margin-top: 50%;
-        border: 1px solid #FF4F00;
+    }
+    #img_top{
+        text-align: center;
     }
 	#title_top{
-		text-align: center;
+        text-align: center;
+        padding-bottom: 30%;
 	}
-    .item-md{
-        padding-left: 0;
-    }
     #sub-logIn{
         text-align: center;
+        color: #fff;
     }
     #alert-danger{
         text-align: center;
@@ -26,10 +23,10 @@ page-login {
         padding-right: 5px;
     }
     .toolbar-title-md{
-		color: #09046A;
+		color: #fff;
 	}
 	.toolbar-title-ios{
-		color: #09046A;
+		color: #fff;
     }
     a {
         color: #FF4F00;
@@ -43,5 +40,14 @@ page-login {
         background-image: url('../assets/imgs/background/background_second.png');
         background-repeat: no-repeat;
         background-size: cover;
+    }
+    .item-md{
+        color: #fff;
+    }
+    .item-ios{
+        color: #fff;
+    }
+    .item-input .label-md{
+        color: #fff;
     }
 }

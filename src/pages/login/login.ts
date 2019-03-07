@@ -45,19 +45,24 @@ export class LoginPage {
   }
 
   tryLogin(value){
-    let loader = this.loadingCtrl.create({
-      content: 'Log-in account',
-      spinner: 'crescent',
-      duration: 4000
-    })
-    loader.present();
-    this.authService.doLogin(value)
-    .then(res => {
-      loader.dismiss();
-      console.log(res);
-    }, err => {
-      console.log(err);
-    })
+    if(value.email && value.password){
+      let loader = this.loadingCtrl.create({
+        content: 'Log-in account',
+        spinner: 'crescent',
+        duration: 4000
+      })
+      this.authService.doLogin(value)
+      .then(res => {
+        if(res){
+          loader.present();
+          console.log(res);
+        }
+        loader.dismiss();
+      }, err => {
+        this.errorMessage = err.message;
+        console.log(err);
+      })
+    }
   }
 
   goRegisterPage(){

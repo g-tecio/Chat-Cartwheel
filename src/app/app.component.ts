@@ -8,6 +8,8 @@ import { IndexPage } from '../pages/index';
 import { AuthProvider } from '../providers/auth/auth';
 
 import { ContactsPage } from './../pages/contacts/contacts';
+import { timer } from 'rxjs/observable/timer';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -15,6 +17,8 @@ import { ContactsPage } from './../pages/contacts/contacts';
 export class MyApp {
 
   rootPage:any = IndexPage;
+
+  showSplash = true;
 
   constructor(
     platform: Platform, 
@@ -30,6 +34,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      timer(3000).subscribe(() => {
+        this.showSplash = false;
+      })
     });
     this.auth.afAuth.authState.subscribe((user) => {
       this.rootPage = (user) ? TabsPage : IndexPage;

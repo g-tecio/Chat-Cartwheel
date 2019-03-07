@@ -1,16 +1,14 @@
 <ion-content padding class="indexContent">
-  <ion-card padding id="card-content">
   <div class="title_content">
+    <h4>Welcome to</h4>
     <ion-title id="title_top">
-      Lynx
+      <img alt="logo" height="120px" src="assets/imgs/logo/logo_lynx.png" > 
     </ion-title>
-    <p>Bienvenido a AGAdmin, la plataforma para organizar tus proyectos y gente de confianza.</p>
   </div>
 
   <div>
     <button ion-button (click)="signIn()" item-left block><ion-icon name="log-in"></ion-icon> Log-In</button>
+    <p>Or</p>
     <button ion-button (click)="register()" item-left block><ion-icon name="person-add"></ion-icon> Sign-Up</button>
   </div>
-  </ion-card>
-
 </ion-content>
