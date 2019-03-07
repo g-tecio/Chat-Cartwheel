@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-navbar color="cartwheel" [hidden]="showSearchbar && platform.is('android')">
+  <ion-navbar [hidden]="showSearchbar && platform.is('android')">
     <ion-title>
-      Lynx
+      <img alt="logo" height="15" src="assets/imgs/logo/logo.png" > 
     </ion-title>
 
     <ion-buttons end>
@@ -11,7 +11,7 @@
     </ion-buttons>
   </ion-navbar>
 
-  <ion-toolbar *ngIf="showSearchbar" color="cartwheel">
+  <ion-toolbar *ngIf="showSearchbar">
     <ion-searchbar (ionInput)="searchChat($event)" [animated]="true" [showCancelButton]="showSearchbar" placeholder="Search..." (ionCancel)="toggleHome()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -34,7 +34,7 @@
     </ion-item-sliding>
   </ion-list>
   <ion-fab bottom right>
-    <button ion-fab (click)="openContacts()" color="cartwheel-second">
+    <button ion-fab (click)="openContacts()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

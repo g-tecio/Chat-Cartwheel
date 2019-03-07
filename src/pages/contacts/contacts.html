@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="cartwheel" [hidden]="showSearchbar && platform.is('android')">
+  <ion-navbar [hidden]="showSearchbar && platform.is('android')">
     <ion-title>
       Contacts
     </ion-title>
@@ -11,7 +11,7 @@
     </ion-buttons>
   </ion-navbar>
 
-  <ion-toolbar *ngIf="showSearchbar" color="cartwheel">
+  <ion-toolbar *ngIf="showSearchbar">
     <ion-searchbar #searchbar (ionInput)="searchUser($event)" [animated]="true" [showCancelButton]="showSearchbar" placeholder="Search..." (ionCancel)="toggleBar()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>

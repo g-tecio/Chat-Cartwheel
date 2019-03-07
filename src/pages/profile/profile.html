@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="cartwheel">
+  <ion-navbar>
     <ion-title *ngIf="user">{{user.username}}</ion-title>
     <ion-buttons end>
       <button ion-button id="person-icon" menuToggle>
@@ -16,7 +16,7 @@
         <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
     </ion-avatar>
     <ion-card-content>
-        <button ion-button block type="button" color="light" (click)="editProfile()" color="cartwheel-second"><ion-icon name="create" style="padding-right: 5px;"></ion-icon>Editar perfil</button>
+        <button ion-button block type="button" (click)="editProfile()"><ion-icon name="create" style="padding-right: 5px;"></ion-icon>Editar perfil</button>
       <ion-card-title id="username-title">
           {{user.name}}
       </ion-card-title>

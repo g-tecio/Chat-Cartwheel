@@ -1,4 +1,9 @@
 page-register {
+    .registerContent{
+		background-image: url('../assets/imgs/background/background.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
     #card-content{
         border-radius: 20px;
         margin-top: 15%;
@@ -41,5 +46,15 @@ page-register {
     }
     a {
         color: #FF4F00;
+    }
+    .button-ios{
+        background-image: url('../assets/imgs/background/background_second.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .button-md{
+        background-image: url('../assets/imgs/background/background_second.png');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }

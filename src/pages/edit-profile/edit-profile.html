@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar color="cartwheel">
+    <ion-navbar>
       <ion-title>Edit Profile</ion-title>
       <ion-buttons end>
           <button ion-button id="person-icon" (click)="updateProfile()">
@@ -15,7 +15,7 @@
         <img class="center" *ngIf="user.profile_picture" src="{{user.profile_picture}}"/>
         <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
       </ion-avatar>
-      <button ion-button block type="button" color="light" color="cartwheel-second" (click)="openSheetCamera()"><ion-icon name="camera" id="icon-camera"></ion-icon> Change photo</button>
+      <button ion-button block type="button" (click)="openSheetCamera()"><ion-icon name="camera" id="icon-camera"></ion-icon> Change photo</button>
       <ion-item>
         <ion-label floating><ion-icon name="person" id="input-icon"></ion-icon> Username</ion-label>
         <ion-input type="text" [(ngModel)]="user.username"></ion-input>

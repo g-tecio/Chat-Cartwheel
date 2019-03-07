@@ -3,21 +3,23 @@ page-home {
         font-size: 20px;
     }
     .searchbar-md .searchbar-input{
-        background-color: #09046A;
+        color: #000;
+    }
+    .searchbar-ios .searchbar-input{
         color: #fff;
     }
     .toolbar .searchbar-md .searchbar-md-cancel{
         font-size: 20px;
         left: 0px;
-        color: #fff;
+        color: #000;
     }
     .searchbar-ios {
-        background-color: #09046A;
         color: #fff;
     }
     .searchbar-md .searchbar-md-cancel{
         display: inline-flex !important;
-        color: #fff;
+        color: #000;
+        font-size: 20px;
     }
     .searchbar-md .searchbar-search-icon{
         display: none;

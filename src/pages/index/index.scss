@@ -1,4 +1,9 @@
 page-index {
+	.indexContent{
+		background-image: url('../assets/imgs/background/background.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
     #card-content{
         height: 50%;
         margin-top: 50%;
@@ -17,16 +22,20 @@ page-index {
 	ion-icon{
 		padding-right: 5px;
 	}
-	.content-md{
-		background-color: #09046A;
-	}
-	.content-ios{
-		background-color: #09046A;
-	}
 	.toolbar-title-md{
 		color: #09046A;
 	}
 	.toolbar-title-ios{
 		color: #09046A;
 	}
+	.button-ios{
+        background-image: url('../assets/imgs/background/background_second.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .button-md{
+        background-image: url('../assets/imgs/background/background_second.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }

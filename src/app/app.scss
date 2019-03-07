@@ -15,9 +15,79 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.toolbar-background{
+    background-image: url('../assets/imgs/background/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.toolbar-title{
+    color: #fff;
+}
+
+///Material Design Styles
+.tabs-md .tabbar{
+    background-image: url('../assets/imgs/background/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.tabs-md .tab-button-icon{
+    color: #a4a4a4;
+}
+.tabs-md .tab-button{
+    color: #a4a4a4;
+}
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+    color: #fff;
+}
+.tabs-md .tab-button[aria-selected="true"] .tab-button-icon{
+    color: #fff;
+}
+.tabs-md .tab-button[aria-selected="true"]{
+    color: #fff;
+}
+.fab-md{
+    background-image: url('../assets/imgs/background/background_second.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .list-md{
     margin: 0px 0 7px;
 }
+.item-divider-md{
+    background-image: url('../assets/imgs/background/background_second.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+///iOS Style
+.tabs-ios .tabbar{
+    background-image: url('../assets/imgs/background/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.button-clear-ios{
+    color: #fff;
+}
+.bar-button-default-ios, .bar-button-clear-ios-default, .bar-button-ios-default{
+    color: #fff;
+}
+.tabs-ios .tab-button[aria-selected="true"] .tab-button-icon{
+    color: #fff;
+}
+.tabs-ios .tab-button[aria-selected="true"]{
+    color: #fff;
+}
+.fab-ios{
+    background-image: url('../assets/imgs/background/background_second.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .list-ios{
     margin: 0;
+}
+.item-divider-ios{
+    background-image: url('../assets/imgs/background/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }

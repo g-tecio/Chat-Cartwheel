@@ -108,8 +108,6 @@ export class ContactsPage {
         })
        }
     })
-    //this.chatProvider.initializeChat(contact);
-    //this.navCtrl.push(ChatPage);
   }
 
 }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="cartwheel">
+  <ion-navbar>
     <ion-title *ngIf="recipient">
       {{recipient.username}}
     </ion-title>
@@ -39,7 +39,7 @@
 </ion-content>
 
 <ion-footer ion-fixed>
-  <ion-toolbar class="no-border" color="cartwheel">
+  <ion-toolbar class="no-border">
     <ion-input [(ngModel)]="newMessage" placeholder="Type a message..."></ion-input>
     <ion-buttons end>
       <button [disabled]="!newMessage" ion-fab mini (click)="addMessage()" color="cartwheel-second">

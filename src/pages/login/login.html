@@ -1,4 +1,4 @@
-<ion-content padding class="form-content">
+<ion-content padding class="loginContent">
   <ion-card padding id="card-content">
     <div class="title_content">
       <ion-title id="title_top">
@@ -14,7 +14,7 @@
         <ion-label floating><ion-icon name="lock"></ion-icon> Password</ion-label>
         <ion-input type="password" formControlName="password" required></ion-input>
       </ion-item>
-      <button ion-button full class="submit-button" type="submit" [disabled]="!loginForm.valid" color="cartwheel-second">
+      <button ion-button full class="submit-button" type="submit" [disabled]="!loginForm.valid">
         <ion-icon name="log-in"></ion-icon> Log-In
       </button>
         <p class="error-message" id="alert-danger">{{errorMessage}}</p>
