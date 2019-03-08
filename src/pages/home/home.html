@@ -25,6 +25,8 @@
           <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png"/>
         </ion-avatar>
         <h2 *ngIf="chat.user" (click)="openChat(chat)">{{chat.user.username}}</h2>
+        <p *ngIf="chat.last_message">{{ chat.last_message.message }}</p> 
+        <ion-note *ngIf="chat.last_message" item-end>{{ chat.last_message.timeStamp.time }}</ion-note>
       </ion-item>
       <ion-item-options slide="left">
         <button ion-button color="danger" (click)="chatAlert(chat)">
