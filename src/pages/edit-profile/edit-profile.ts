@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ActionSheetController, LoadingController } from 'ionic-angular';
 
 import { ProfilePage } from './../profile/profile';
 
@@ -25,13 +25,17 @@ export class EditProfilePage {
     public db: AngularFirestore,
     public storage: AngularFireStorage,
     public menuCtrl: MenuController,
-    public camera: Camera
+    public camera: Camera,
+    private loaderCtrl: LoadingController
     ) {
       this.menuCtrl.enable(false, 'myMenu')
       this.user = this.navParams.get('_user');
   }
 
   takePhoto(){
+    let loader = this.loaderCtrl.create({
+      content: 'Uploading picture'
+    })
     const options: CameraOptions = {
       quality: 20,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -45,6 +49,7 @@ export class EditProfilePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
+      loader.present();
       const refStorage = this.storage.ref(`ProfileImages/${this.user.id}`);
       refStorage.putString(imageData, 'base64', { contentType: 'image/jpeg' }).then((imageURL) => {
         imageURL.ref.getDownloadURL().then(imgURL => {
@@ -52,6 +57,8 @@ export class EditProfilePage {
           this.user.profile_picture = imgURL;
           this.db.doc<any>('users/' + this.user.id).update({
             profile_picture: imgURL
+          }).then(() => {
+            loader.dismiss();
           })
         }) 
       });
@@ -61,6 +68,9 @@ export class EditProfilePage {
   }
 
   getImage(){
+    let loader = this.loaderCtrl.create({
+      content: 'Uploading picture'
+    })
     const options: CameraOptions = {
       quality: 80,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -71,6 +81,7 @@ export class EditProfilePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
+      loader.present();
       const refStorage = this.storage.ref(`ProfileImages/${this.user.id}`);
       refStorage.putString(imageData, 'base64', { contentType: 'image/jpeg' }).then((imageURL) => {
         imageURL.ref.getDownloadURL().then(imgURL => {
@@ -78,6 +89,8 @@ export class EditProfilePage {
           this.user.profile_picture = imgURL;
           this.db.doc<any>('users/' + this.user.id).update({
             profile_picture: imgURL
+          }).then(() => {
+            loader.dismiss();
           })
         }) 
       });

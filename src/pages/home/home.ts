@@ -8,6 +8,7 @@ import { ChatProvider } from './../../providers/chat/chat';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 import firebase from 'firebase';
+import { registerLocaleData } from '@angular/common';
 
 
 
@@ -48,6 +49,11 @@ export class HomePage {
         this.firestore.collection('users/', ref => ref.where('id_user', '==', user_recipient)).valueChanges().subscribe(res => {
           this.recipient = chat.user = res[0];
         });
+
+        this.firestore.collection('messages/', ref => ref.where('chat_id', '==', chat.id).orderBy('timeStamp')).valueChanges().subscribe(res => {
+          chat.last_message = res[res.length - 1];
+          console.log(chat.last_message.timeStamp.hour);
+        })
       })
       this.chats_ready = true;
     });

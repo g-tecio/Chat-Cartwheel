@@ -32,7 +32,7 @@ export class ChatProvider {
       this.db.collection<any>('messages').add({
         sentBy: firebase.auth().currentUser.uid,
         message: message,
-        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+        timeStamp: this.getDateObject(),
         chat_id: chat_id
       }).then(() => {
         resolve(true);
@@ -85,5 +85,21 @@ export class ChatProvider {
     }).catch((err) => {
       console.error('Error removing document', err);
     });
+  }
+
+  getDateObject() {
+    let result = {
+      year: new Date().getFullYear(),
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate(),
+      time: new Date().getHours() + ':' + new Date().getMinutes(),
+      formattedDate: ''
+    } 
+
+    let formattedDate = result.day + '/'  + result.month + '/' + result.year;
+    result.formattedDate = formattedDate;
+    
+    return result;
+
   }
 }
