@@ -16,8 +16,7 @@ import { timer } from 'rxjs/observable/timer';
 })
 export class MyApp {
 
-  rootPage:any = IndexPage;
-
+  rootPage: any;
   showSplash = true;
 
   constructor(
@@ -30,18 +29,20 @@ export class MyApp {
     public loadingCtrl: LoadingController
     ) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      splashScreen.hide();
-
       timer(3000).subscribe(() => {
         this.showSplash = false;
       })
+      this.auth.afAuth.authState.subscribe((user) => {
+        if(user){
+          this.rootPage = TabsPage;
+          splashScreen.hide();
+        } else {
+          this.rootPage = IndexPage;
+          splashScreen.hide();
+        }
+      })
     });
-    this.auth.afAuth.authState.subscribe((user) => {
-      this.rootPage = (user) ? TabsPage : IndexPage;
-    })
   }
 
   logout(){
