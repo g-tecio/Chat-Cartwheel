@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-item *ngIf="recipient && showProfile" id="item-profile">
+    <ion-item *ngIf="recipient && showProfile" id="item-profile" (click)="viewProfile()">
       <ion-avatar item-start>
         <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture" imageViewer/>
         <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
@@ -18,7 +18,7 @@
 <ion-content #content>
   <div class="chatWindow">
     <ion-list *ngIf="user_id && recipient" no-lines>
-      <ion-item *ngFor="let item of allMessages | async" text-wrap>
+      <ion-item-sliding *ngFor="let item of allMessages | async" text-wrap>
         <ion-item *ngIf="item.sentBy != user_id" id="item-bubble">
           <ion-avatar item-left>
             <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture"/>
@@ -37,7 +37,13 @@
             <p>{{item.message}}</p>
           </div>
         </ion-item>
-      </ion-item>
+        <ion-item-options slide="right" class="item-option">
+          <p>{{item.timeStamp.time}}</p>
+          <button ion-button color="danger" *ngIf="item.sentBy === user_id">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
   </div>
 </ion-content>

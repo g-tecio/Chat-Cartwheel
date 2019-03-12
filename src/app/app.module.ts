@@ -9,6 +9,7 @@ import { LoginPage } from './../pages/login/login';
 import { GroupPage } from './../pages/group/group';
 import { ProfilePage } from './../pages/profile/profile';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { ViewProfilePage } from './../pages/view-profile/view-profile';
 import { HomePage } from '../pages/home/home';
 import { ContactsPage } from './../pages/contacts/contacts';
 import { ChatPage } from './../pages/chat/chat';
@@ -17,6 +18,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from "@ionic-native/camera/";
+import { Network } from "@ionic-native/network";
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -40,6 +42,7 @@ import { PopoverChatComponent } from './../components/popover-chat/popover-chat'
     RegisterPage,
     GroupPage,
     ProfilePage,
+    ViewProfilePage,
     EditProfilePage,
     HomePage,
     ContactsPage,
@@ -63,6 +66,7 @@ import { PopoverChatComponent } from './../components/popover-chat/popover-chat'
     RegisterPage,
     GroupPage,
     ProfilePage,
+    ViewProfilePage,
     EditProfilePage,
     HomePage,
     ContactsPage,
@@ -73,6 +77,7 @@ import { PopoverChatComponent } from './../components/popover-chat/popover-chat'
   providers: [
     StatusBar,
     SplashScreen,
+    Network,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,

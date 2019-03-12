@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, MenuController, AlertController, Content, Platform } from 'ionic-angular';
+import { NavController, MenuController, AlertController, Content, Platform, ToastController } from 'ionic-angular';
 
 import { ContactsPage } from './../contacts/contacts';
 import { ChatPage } from './../chat/chat';
@@ -7,7 +7,11 @@ import { ChatPage } from './../chat/chat';
 import { ChatProvider } from './../../providers/chat/chat';
 import { AngularFirestore } from 'angularfire2/firestore';
 
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Network } from '@ionic-native/network';
+
 import firebase from 'firebase';
+
 
 
 @Component({
@@ -30,7 +34,9 @@ export class HomePage {
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public alertCtrl: AlertController,
+    public camera: Camera,
     public platform: Platform,
+    public network: Network,
     public chatProvider: ChatProvider,
     private firestore: AngularFirestore,
   ) {
@@ -118,6 +124,24 @@ export class HomePage {
         return true;
       }
       return false; 
+    })
+  }
+
+  openCamera(){
+    const options: CameraOptions = {
+      quality: 20,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      targetWidth: 250,
+      targetHeight: 250,
+      saveToPhotoAlbum: true,
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      
     })
   }
 

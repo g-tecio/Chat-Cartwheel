@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content, MenuController, ActionSheetController, PopoverController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 
+import { ViewProfilePage } from './../view-profile/view-profile';
+
 import * as firebase from 'firebase/app';
 
 import { ChatProvider } from './../../providers/chat/chat';
@@ -71,6 +73,10 @@ export class ChatPage {
     setTimeout(() => {
       this.content.scrollToBottom();
     }, 1000);
+  }
+
+  ionViewCanEnter(){
+    this.showProfile = true;
   }
 
   ionViewDidEnter(){
@@ -146,6 +152,12 @@ export class ChatPage {
 
     this.camera.getPicture(options).then((imageData) => {
 
+    })
+  }
+
+  viewProfile(){
+    this.navCtrl.push(ViewProfilePage, {
+      _recipient: this.recipient
     })
   }
 }

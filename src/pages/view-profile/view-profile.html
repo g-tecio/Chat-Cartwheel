@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="recipient">{{recipient.username}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngIf="recipient" id="card_content">
+    <ion-avatar>
+        <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture" imageViewer/>
+        <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
+    </ion-avatar>
+    <ion-card-content>
+      <ion-card-title id="username-title">
+          {{recipient.name}}
+      </ion-card-title>
+      <p *ngIf="recipient.bio">
+          {{recipient.bio}}  
+      </p>
+      <p *ngIf="recipient.work">
+          <ion-icon name="briefcase" id="input-icon"> {{recipient.work}}</ion-icon>
+      </p>
+      <p *ngIf="recipient.city">
+          <ion-icon name="locate" id="input-icon"> {{recipient.city}}</ion-icon>
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

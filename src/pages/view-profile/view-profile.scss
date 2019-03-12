@@ -1,0 +1,21 @@
+page-view-profile {
+    #card_content{
+        border-radius: 20px;
+        border: 1px solid #FF4F00;
+    }
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 250px;
+        max-height: 250px;
+        border-radius: 125px;
+        border: 1px solid #FF4F00;
+    }
+    ion-avatar{
+        padding-top: 20px;
+    }
+    #username-title{
+        text-align: center;
+    }
+}
