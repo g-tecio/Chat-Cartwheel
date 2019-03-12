@@ -1,11 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content, MenuController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, MenuController, ActionSheetController, PopoverController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 
 import * as firebase from 'firebase/app';
 
 import { ChatProvider } from './../../providers/chat/chat';
 import { AngularFirestore } from 'angularfire2/firestore';
+
+import { PopoverChatComponent } from '../../components/popover-chat/popover-chat';
+
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 @IonicPage()
 @Component({
@@ -28,8 +33,10 @@ export class ChatPage {
     public navParams: NavParams,
     public menuCtrl: MenuController,
     public actionSheetCtrl: ActionSheetController,
+    public camera: Camera,
+    public popOverCtrl: PopoverController,
     public chatProvider: ChatProvider,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
     ) {
       this.user_id = firebase.auth().currentUser.uid;
 
@@ -70,13 +77,26 @@ export class ChatPage {
     this.menuCtrl.enable(false, 'myMenu');
   }
 
-  openSheetProfile(){
+  openSheetChat(){
     const actionSheet = this.actionSheetCtrl.create({
-      title: `${this.recipient.username}`,
       buttons: [
         {
-          text: 'View Profile',
-          icon: 'person',
+          text: 'Camera',
+          icon: 'camera',
+          handler: () => {
+            this.takePhoto();
+          }
+        },
+        {
+          text: 'Send a photo',
+          icon: 'image',
+          handler: () => {
+            this.getImage();
+          }
+        },
+        {
+          text: 'Document',
+          icon: 'document',
           handler: () => {
 
           }
@@ -84,5 +104,48 @@ export class ChatPage {
       ]
     })
     actionSheet.present();
+  }
+
+  openPopOverChat(myEvent){
+    let popOver = this.popOverCtrl.create(PopoverChatComponent);
+    popOver.present({
+      ev: myEvent
+    })
+    popOver.onDidDismiss(popOverData => {
+      console.log(popOverData);
+    })
+  }
+
+  takePhoto(){
+    const options: CameraOptions = {
+      quality: 20,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      targetWidth: 250,
+      targetHeight: 250,
+      saveToPhotoAlbum: true,
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      
+    })
+  }
+
+  getImage(){
+    const options: CameraOptions = {
+      quality: 80,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      targetWidth: 250,
+      targetHeight: 250,
+      allowEdit: true,
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+
+    })
   }
 }

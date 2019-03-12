@@ -21,8 +21,8 @@
       <ion-item-sliding *ngFor="let user of filteredUsers">
         <ion-item *ngIf="user.email != currentUser">
           <ion-avatar item-left>
-            <img class="center" *ngIf="user.profile_picture" [src]="user.profile_picture"/>
-            <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
+            <img class="center" *ngIf="user.profile_picture" [src]="user.profile_picture" imageViewer/>
+            <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
           </ion-avatar>
           <h2>{{user.username}}</h2>
           <p>{{user.name}}</p>

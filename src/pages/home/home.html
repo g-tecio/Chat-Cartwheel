@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar [hidden]="showSearchbar && platform.is('android')">
     <ion-title>
-      <img alt="logo" height="15" src="assets/imgs/logo/logo.png" > 
+      <img alt="logo" height="15" src="assets/imgs/logo/logo.png">
     </ion-title>
 
     <ion-buttons end>
@@ -19,12 +19,12 @@
 <ion-content padding #contentHome>
   <ion-list>
     <ion-item-sliding *ngFor="let chat of filteredChats">
-      <ion-item>
+      <ion-item (click)="openChat(chat)">
         <ion-avatar *ngIf="chat.user" item-left>
-          <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture"/>
-          <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png"/>
+          <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture" imageViewer/>
+          <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
         </ion-avatar>
-        <h2 *ngIf="chat.user" (click)="openChat(chat)">{{chat.user.username}}</h2>
+        <h2 *ngIf="chat.user">{{chat.user.username}}</h2>
         <p *ngIf="chat.last_message">{{ chat.last_message.message }}</p> 
         <ion-note *ngIf="chat.last_message" item-end>{{ chat.last_message.timeStamp.time }}</ion-note>
       </ion-item>

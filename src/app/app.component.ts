@@ -8,7 +8,6 @@ import { IndexPage } from '../pages/index';
 import { AuthProvider } from '../providers/auth/auth';
 
 import { ContactsPage } from './../pages/contacts/contacts';
-import { timer } from 'rxjs/observable/timer';
 
 
 @Component({
@@ -17,7 +16,6 @@ import { timer } from 'rxjs/observable/timer';
 export class MyApp {
 
   rootPage: any;
-  showSplash = true;
 
   constructor(
     platform: Platform, 
@@ -30,9 +28,7 @@ export class MyApp {
     ) {
     platform.ready().then(() => {
       statusBar.styleDefault();
-      timer(3000).subscribe(() => {
-        this.showSplash = false;
-      })
+
       this.auth.afAuth.authState.subscribe((user) => {
         if(user){
           this.rootPage = TabsPage;

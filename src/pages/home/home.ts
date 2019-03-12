@@ -32,7 +32,7 @@ export class HomePage {
     public alertCtrl: AlertController,
     public platform: Platform,
     public chatProvider: ChatProvider,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
   ) {
     this.user_id = firebase.auth().currentUser.uid;
     this.chatProvider.getChats().subscribe(chat => {

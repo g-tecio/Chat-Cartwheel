@@ -27,6 +27,9 @@ import { environment } from './../environments/environment';
 import { AuthProvider } from '../providers/auth/auth';
 import { ChatProvider } from '../providers/chat/chat';
 
+import { IonicImageViewerModule } from "ionic-img-viewer";
+
+import { PopoverChatComponent } from './../components/popover-chat/popover-chat';
 
 
 @NgModule({
@@ -41,14 +44,16 @@ import { ChatProvider } from '../providers/chat/chat';
     HomePage,
     ContactsPage,
     ChatPage,
-    TabsPage
+    TabsPage,
+    PopoverChatComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.config),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,7 +67,8 @@ import { ChatProvider } from '../providers/chat/chat';
     HomePage,
     ContactsPage,
     ChatPage,
-    TabsPage
+    TabsPage,
+    PopoverChatComponent
   ],
   providers: [
     StatusBar,

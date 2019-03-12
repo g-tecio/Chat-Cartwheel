@@ -2,13 +2,13 @@
   <ion-navbar>
     <ion-item *ngIf="recipient && showProfile" id="item-profile">
       <ion-avatar item-start>
-        <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture"/>
-        <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png"/>
+        <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture" imageViewer/>
+        <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
       </ion-avatar>
       <h2>{{recipient.username}}</h2>
     </ion-item>
     <ion-buttons end id="buttons_chat">
-      <button ion-button id="person-icon" (click)="openSheetProfile()">
+      <button ion-button id="person-icon" (click)="openPopOverChat($event)">
         <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>
@@ -44,9 +44,14 @@
 
 <ion-footer ion-fixed>
   <ion-toolbar class="no-border">
+    <ion-buttons left>
+      <button ion-button id="person-icon" (click)="openSheetChat()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-input [(ngModel)]="newMessage" placeholder="Type a message..."></ion-input>
     <ion-buttons end>
-      <button [disabled]="!newMessage" ion-fab mini (click)="addMessage()" color="cartwheel-second">
+      <button [disabled]="!newMessage" ion-fab mini (click)="addMessage()">
         <ion-icon name="send" style="font-size: 20px;"></ion-icon>
       </button>
     </ion-buttons>
