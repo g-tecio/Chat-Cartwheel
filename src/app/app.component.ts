@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, LoadingController, App, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Network } from '@ionic-native/network';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { IndexPage } from '../pages/index';
@@ -24,7 +25,8 @@ export class MyApp {
     public app: App,
     public modalCtrl: ModalController,
     private auth: AuthProvider,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private network: Network
     ) {
     platform.ready().then(() => {
       statusBar.styleDefault();
