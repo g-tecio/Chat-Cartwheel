@@ -8,7 +8,6 @@ import { ChatProvider } from './../../providers/chat/chat';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Network } from '@ionic-native/network';
 
 import firebase from 'firebase';
 
@@ -36,7 +35,6 @@ export class HomePage {
     public alertCtrl: AlertController,
     public camera: Camera,
     public platform: Platform,
-    public network: Network,
     public chatProvider: ChatProvider,
     private firestore: AngularFirestore,
   ) {
