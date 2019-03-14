@@ -154,6 +154,7 @@ export class ChatPage {
   }
 
   takePhoto(){
+    let time = new Date().getTime();
     const options: CameraOptions = {
       quality: 20,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -167,7 +168,7 @@ export class ChatPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      const refStorage = this.storage.ref(`MessagesIMG/${this.user.id} with ${this.recipient.id}`);
+      const refStorage = this.storage.ref(`MessagesIMG/${this.user.id} with ${this.recipient.id}/${time}`);
       refStorage.putString(imageData, 'base64', { contentType: 'image/jpeg' }).then((imageURL) => {
         imageURL.ref.getDownloadURL().then(imgURL => {
           let messageIMG = {
@@ -185,6 +186,7 @@ export class ChatPage {
   }
 
   getImage(){
+    let time = new Date().getTime();
     const options: CameraOptions = {
       quality: 80,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -195,7 +197,18 @@ export class ChatPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-
+      const refStorage = this.storage.ref(`MessagesIMG/${this.user.id} with ${this.recipient.id}/${time}`);
+      refStorage.putString(imageData, 'base64', { contentType: 'image/jpeg' }).then((imageURL) => {
+        imageURL.ref.getDownloadURL().then(imgURL => {
+          let messageIMG = {
+            image: imgURL
+          }
+          this.chatProvider.addMessage(messageIMG, this.chat.id).then(() => {
+            this.newMessage = '';
+            this.content.scrollToBottom();
+          })
+        }) 
+      });
     })
   }
 
