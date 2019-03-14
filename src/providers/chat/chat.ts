@@ -27,7 +27,7 @@ export class ChatProvider {
     })
   }
 
-  addMessage(message: string, chat_id){
+  addMessage(message, chat_id){
     var promise = new Promise((resolve, reject) => {
       this.db.collection<any>('messages').add({
         sentBy: firebase.auth().currentUser.uid,
@@ -44,7 +44,14 @@ export class ChatProvider {
   }
 
   getAllMessage(chat){
-    this.messages = this.db.collection<any>('messages', ref => ref.where('chat_id', '==', chat.id).orderBy('timeStamp')).valueChanges();
+    this.messages = this.db.collection<any>('messages', ref => ref.where('chat_id', '==', chat.id).orderBy('timeStamp'))
+    .snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as any;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
     return this.messages;
   }
 
@@ -70,7 +77,6 @@ export class ChatProvider {
 
   deleteChat(_chat){
     this.db.collection<any>('chats').doc(_chat.id).delete().then(() => {
-      console.log('Chat deleted');
       this.db.collection('messages', ref => ref.where('chat_id', '==', _chat.id)).snapshotChanges().pipe(
         map(actions => actions.map(a => {
           const data = a.payload.doc.data() as any;
@@ -84,6 +90,12 @@ export class ChatProvider {
       });
     }).catch((err) => {
       console.error('Error removing document', err);
+    });
+  }
+
+  deleteMessage(_message){
+    this.db.collection<any>('messages').doc(_message.id).delete().then(() => {
+      console.log('Message Deleted')
     });
   }
 

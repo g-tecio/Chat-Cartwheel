@@ -25,7 +25,8 @@
             <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
           <div class="youBubble" >
-            <p>{{item.message}}</p>
+            <p *ngIf="item.message.text">{{item.message.text}}</p>
+            <img class="imageMessage" *ngIf="item.message.image" [src]="item.message.image" imageViewer/>
           </div>
         </ion-item>
         <ion-item *ngIf="item.sentBy === user_id" id="item-bubble">
@@ -34,12 +35,13 @@
             <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
           <div class="myBubble">
-            <p>{{item.message}}</p>
+            <p *ngIf="item.message.text">{{item.message.text}}</p>
+            <img class="imageMessage" *ngIf="item.message.image" [src]="item.message.image" imageViewer/>
           </div>
         </ion-item>
         <ion-item-options slide="right" class="item-option">
           <p>{{item.timeStamp.time}}</p>
-          <button ion-button color="danger" *ngIf="item.sentBy === user_id">
+          <button ion-button color="danger" *ngIf="item.sentBy === user_id" (click)="alertMessage(item)">
             <ion-icon name="trash"></ion-icon>
           </button>
         </ion-item-options>
