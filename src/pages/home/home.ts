@@ -52,9 +52,9 @@ export class HomePage {
           this.recipient = chat.user = res[0];
         });
 
-        this.firestore.collection('messages/', ref => ref.where('chat_id', '==', chat.id).orderBy('timeStamp')).valueChanges().subscribe(res => {
+        this.firestore.collection('messages/', ref => ref.where('chat_id', '==', chat.id).orderBy('time')).valueChanges().subscribe((res) => {
           chat.last_message = res[res.length - 1];
-        })
+        });
       })
       this.chats_ready = true;
     });
