@@ -33,6 +33,7 @@ export class ChatProvider {
         sentBy: firebase.auth().currentUser.uid,
         message: message,
         timeStamp: this.getDateObject(),
+        time: firebase.firestore.FieldValue.serverTimestamp(),
         chat_id: chat_id
       }).then(() => {
         resolve(true);
@@ -44,7 +45,7 @@ export class ChatProvider {
   }
 
   getAllMessage(chat){
-    this.messages = this.db.collection<any>('messages', ref => ref.where('chat_id', '==', chat.id).orderBy('timeStamp'))
+    this.messages = this.db.collection<any>('messages', ref => ref.where('chat_id', '==', chat.id).orderBy('time'))
     .snapshotChanges().pipe(
         map(actions => actions.map(a => {
           const data = a.payload.doc.data() as any;

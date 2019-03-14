@@ -20,7 +20,7 @@
     <ion-list *ngIf="user_id && recipient" no-lines>
       <ion-item-sliding *ngFor="let item of allMessages | async" text-wrap>
         <ion-item *ngIf="item.sentBy != user_id" id="item-bubble">
-          <ion-avatar item-left>
+          <ion-avatar *ngIf="recipient" item-left>
             <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture"/>
             <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
@@ -30,7 +30,7 @@
           </div>
         </ion-item>
         <ion-item *ngIf="item.sentBy === user_id" id="item-bubble">
-          <ion-avatar item-right>
+          <ion-avatar *ngIf="user" item-right>
             <img class="center" *ngIf="user.profile_picture" [src]="user.profile_picture"/>
             <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
           </ion-avatar>
