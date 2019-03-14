@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, MenuController, AlertController, Content, Platform, ToastController } from 'ionic-angular';
+import { NavController, MenuController, AlertController, Content, Platform } from 'ionic-angular';
 
 import { ContactsPage } from './../contacts/contacts';
 import { ChatPage } from './../chat/chat';

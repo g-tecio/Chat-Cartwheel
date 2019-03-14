@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, LoadingController, App, ModalController } from 'ionic-angular';
+import { Platform, LoadingController, App, ModalController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Network } from '@ionic-native/network';
@@ -24,12 +24,18 @@ export class MyApp {
     splashScreen: SplashScreen,
     public app: App,
     public modalCtrl: ModalController,
+    public toast: ToastController,
     private auth: AuthProvider,
     public loadingCtrl: LoadingController,
     private network: Network
     ) {
     platform.ready().then(() => {
-      statusBar.styleDefault();
+
+      if(platform.is('ios')){
+        statusBar.styleDefault();
+      } else if (platform.is('android')){
+        statusBar.backgroundColorByHexString('#56477C')
+      }
 
       this.auth.afAuth.authState.subscribe((user) => {
         if(user){
@@ -39,6 +45,20 @@ export class MyApp {
           this.rootPage = IndexPage;
           splashScreen.hide();
         }
+      })
+
+      this.network.onConnect().subscribe(() => {
+        this.toast.create({
+          message: 'You are online',
+          duration: 3000
+        }).present();
+      })
+
+      this.network.onDisconnect().subscribe(() => {
+        this.toast.create({
+          message: 'You are offline',
+          duration: 3000
+        }).present();
       })
     });
   }

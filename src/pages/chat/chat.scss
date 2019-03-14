@@ -94,7 +94,23 @@ page-chat {
         padding-top: 8px;
         color: #d3d3d3;
     }
-    .imageMessage{
+    .youImage{
+        float: left;
+        padding: 10px 10px;
+        background-image: url('../assets/imgs/background/background_second.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 20px;
+        max-width: 200px;
+        max-height: 200px;
+    }
+    .myImage{
+        float: right;
+        padding: 10px 10px;
+        background-image: url('../assets/imgs/background/background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 20px;
         max-width: 200px;
         max-height: 200px;
     }

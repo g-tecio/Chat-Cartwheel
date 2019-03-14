@@ -16,7 +16,7 @@ page-edit-profile {
         max-height: 250px;
         border-radius: 125px;
         margin-bottom: 10px;
-        border: 1px solid #FF4F00;
+        border: 1px solid #F37C34;
     }
     ion-avatar{
         padding-top: 20px;
@@ -27,6 +27,10 @@ page-edit-profile {
     #bio-input{
         padding-bottom: 10px;
     }
+    #itemDivider{
+        background-color: #F37C34;
+        color: #fff;
+    }
     #input-icon{
         padding-right: 5px;
     }
@@ -35,15 +39,5 @@ page-edit-profile {
     }
     #section-items{
         text-align: center;
-    }
-    .button-ios{
-        background-image: url('../assets/imgs/background/background_second.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .button-md{
-        background-image: url('../assets/imgs/background/background_second.png');
-        background-repeat: no-repeat;
-        background-size: cover;
     }
 }

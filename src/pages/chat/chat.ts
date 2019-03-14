@@ -94,10 +94,10 @@ export class ChatPage {
   }
 
   alertMessage(_message){
-    console.log(_message);
+    let messageAlert = (_message.message.text) ? _message.message.text:"Image";
     const alertMessage = this.alertCtrl.create({
       title: 'Are you want to delete this message?',
-      message: `Delete ${_message.message}`,
+      message: `Delete ${messageAlert}`,
       buttons: [
         {
           text: 'Disagree',
@@ -209,6 +209,8 @@ export class ChatPage {
           })
         }) 
       });
+    }, (err) => {
+      console.log(err);
     })
   }
 

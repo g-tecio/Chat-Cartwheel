@@ -26,7 +26,7 @@
           </ion-avatar>
           <div class="youBubble" >
             <p *ngIf="item.message.text">{{item.message.text}}</p>
-            <img class="imageMessage" *ngIf="item.message.image" [src]="item.message.image" imageViewer/>
+            <img class="youImage" *ngIf="item.message.image" [src]="item.message.image" imageViewer/>
           </div>
         </ion-item>
         <ion-item *ngIf="item.sentBy === user_id" id="item-bubble">
@@ -36,7 +36,7 @@
           </ion-avatar>
           <div class="myBubble">
             <p *ngIf="item.message.text">{{item.message.text}}</p>
-            <img class="imageMessage" *ngIf="item.message.image" [src]="item.message.image" imageViewer/>
+            <img class="myImage" *ngIf="item.message.image" [src]="item.message.image" imageViewer/>
           </div>
         </ion-item>
         <ion-item-options slide="right" class="item-option">
