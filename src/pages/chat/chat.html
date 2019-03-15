@@ -59,7 +59,7 @@
     </ion-buttons>
     <ion-input [(ngModel)]="newMessage" placeholder="Type a message..."></ion-input>
     <ion-buttons end>
-      <button [disabled]="!newMessage" ion-fab mini (click)="addMessage()">
+      <button [disabled]="!newMessage" ion-fab mini (click)="addMessage()" color="cartwheel-second">
         <ion-icon name="send" style="font-size: 20px;"></ion-icon>
       </button>
     </ion-buttons>

@@ -1,12 +1,9 @@
 page-index {
 	.indexContent{
-		background-image: url('../assets/imgs/background/background.png');
-		background-repeat: no-repeat;
-		background-size: cover;
+		background-color: #56477C;
 	}
 	.title_content{
-		padding-top: 25%;
-		padding-bottom: 50%;
+		padding-top: 65%;
 	}
 	#title_top{
 		text-align: center;
@@ -22,10 +19,14 @@ page-index {
 	ion-icon{
 		padding-right: 5px;
 	}
-	.toolbar-title-md{
-		color: #09046A;
+	ion-footer{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #F37C34;
 	}
-	.toolbar-title-ios{
-		color: #09046A;
+	.buttonIndex{
+		width: 50%;
+		box-shadow: inherit;
 	}
 }

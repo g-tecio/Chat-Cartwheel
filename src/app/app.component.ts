@@ -9,6 +9,7 @@ import { IndexPage } from '../pages/index';
 import { AuthProvider } from '../providers/auth/auth';
 
 import { ContactsPage } from './../pages/contacts/contacts';
+import { timer } from 'rxjs/observable/timer';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { ContactsPage } from './../pages/contacts/contacts';
 export class MyApp {
 
   rootPage: any;
+  showSplash = true;
 
   constructor(
     platform: Platform, 
@@ -30,13 +32,12 @@ export class MyApp {
     private network: Network
     ) {
     platform.ready().then(() => {
+      statusBar.backgroundColorByHexString('#56477C');
 
-      if(platform.is('ios')){
-        statusBar.styleDefault();
-      } else if (platform.is('android')){
-        statusBar.backgroundColorByHexString('#56477C')
-      }
-
+      timer(3000).subscribe(() => {
+        this.showSplash = false;
+      })
+      
       this.auth.afAuth.authState.subscribe((user) => {
         if(user){
           this.rootPage = TabsPage;

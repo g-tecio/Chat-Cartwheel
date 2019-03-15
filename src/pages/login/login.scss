@@ -1,16 +1,16 @@
 page-login {
     .loginContent{
-		background-image: url('../assets/imgs/background/background.png');
-		background-repeat: no-repeat;
-		background-size: cover;
+		background-color: #56477C;
     }
     #img_top{
         text-align: center;
     }
 	#title_top{
         text-align: center;
-        padding-bottom: 30%;
-	}
+    }
+    form{
+        padding-top: 40%;
+    }
     #sub-logIn{
         text-align: center;
         color: #fff;
@@ -29,7 +29,7 @@ page-login {
 		color: #fff;
     }
     a {
-        color: #FF4F00;
+        color: #F37C34;
     }
     .item-md{
         color: #fff;
@@ -39,5 +39,11 @@ page-login {
     }
     .item-input .label-md{
         color: #fff;
+    }
+    ion-footer{
+		background-color: #F37C34;
+    }
+    .submit-button{
+        box-shadow: inherit;
     }
 }
