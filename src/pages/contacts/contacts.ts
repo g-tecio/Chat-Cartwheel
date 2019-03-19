@@ -7,6 +7,7 @@ import { AuthProvider } from './../../providers/auth/auth';
 import { ChatProvider } from './../../providers/chat/chat';
 import { ChatPage } from '../chat/chat';
 import { HomePage } from '../home/home';
+import { Subscription } from 'rxjs';
 
 
 @IonicPage()
@@ -20,6 +21,7 @@ export class ContactsPage {
   filteredUsers = [];
   currentUser:any;
   showSearchbar: boolean = false;
+  subscription: Subscription;
   @ViewChild('content') content: Content;
 
   constructor(
@@ -71,7 +73,7 @@ export class ContactsPage {
 
   openChat(contact){
     let currentUserID = this.authService.afAuth.auth.currentUser.uid;
-    this.db.collection('chats', ref => ref.where('recipient_id', '==', contact.id_user).where('user_id','==', currentUserID)).snapshotChanges().pipe(
+    this.subscription = this.db.collection('chats', ref => ref.where('recipient_id', '==', contact.id_user).where('user_id','==', currentUserID)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as any;
         const id = a.payload.doc.id;
@@ -103,11 +105,11 @@ export class ContactsPage {
            } else {
             console.log("no lo encontre");
             this.chatProvider.initializeChat(contact);
-            this.navCtrl.setRoot(HomePage);
+            this.navCtrl.setRoot(HomePage).then(() => this.subscription.unsubscribe());
            }
         })
        }
-    })
+    });
   }
 
 }

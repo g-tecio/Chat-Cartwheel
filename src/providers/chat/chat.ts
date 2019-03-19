@@ -87,7 +87,7 @@ export class ChatProvider {
       ).subscribe(messages => {
         messages.forEach(message => {
           this.db.collection('messages').doc(message.id).delete().catch((e) => console.log(e.message));
-        });
+        }); 
       });
     }).catch((err) => {
       console.error('Error removing document', err);
