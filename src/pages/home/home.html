@@ -26,15 +26,14 @@
     <ion-item-sliding *ngFor="let chat of filteredChats">
       <ion-item (click)="openChat(chat)">
         <ion-avatar *ngIf="chat.user" item-left>
-          <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture" imageViewer/>
-          <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
+          <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture" (click)="openImageView(chat)"/>
+          <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png" (click)="openImageView(chat)"/>
         </ion-avatar>
         <h2 *ngIf="chat.user">{{chat.user.username}}</h2>
         <div *ngIf="chat.last_message">
           <p *ngIf="chat.last_message">{{ chat.last_message.message.text }}</p> 
           <p *ngIf="chat.last_message.message.image"><ion-icon name="camera"></ion-icon> Image</p> 
         </div>
-        
         <ion-note *ngIf="chat.last_message" item-end>{{ chat.last_message.timeStamp.time }}</ion-note>
       </ion-item>
       <ion-item-options slide="left">

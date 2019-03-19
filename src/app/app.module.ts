@@ -32,6 +32,7 @@ import { ChatProvider } from '../providers/chat/chat';
 import { IonicImageViewerModule } from "ionic-img-viewer";
 
 import { PopoverChatComponent } from './../components/popover-chat/popover-chat';
+import { ModalImageComponent } from './../components/modal-image/modal-image';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { PopoverChatComponent } from './../components/popover-chat/popover-chat'
     ContactsPage,
     ChatPage,
     TabsPage,
-    PopoverChatComponent
+    PopoverChatComponent,
+    ModalImageComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,8 @@ import { PopoverChatComponent } from './../components/popover-chat/popover-chat'
     ContactsPage,
     ChatPage,
     TabsPage,
-    PopoverChatComponent
+    PopoverChatComponent,
+    ModalImageComponent
   ],
   providers: [
     StatusBar,
