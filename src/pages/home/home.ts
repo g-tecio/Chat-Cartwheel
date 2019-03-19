@@ -1,15 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, MenuController, AlertController, Content, Platform } from 'ionic-angular';
+import { NavController, MenuController, AlertController, Content, Platform, ModalController } from 'ionic-angular';
 
 import { ContactsPage } from './../contacts/contacts';
 import { ChatPage } from './../chat/chat';
 
 import { ChatProvider } from './../../providers/chat/chat';
 import { AngularFirestore } from 'angularfire2/firestore';
-
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import firebase from 'firebase';
+
+import { ModalImageComponent } from './../../components/modal-image/modal-image';
 
 
 
@@ -33,6 +34,7 @@ export class HomePage {
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     public camera: Camera,
     public platform: Platform,
     public chatProvider: ChatProvider,
@@ -89,6 +91,13 @@ export class HomePage {
     if(this.platform.is('ios')){
       this.content.resize();
     }
+  }
+
+  openImageView(_chat){
+    let imageView = this.modalCtrl.create(ModalImageComponent, {
+      _user: _chat.user
+    })
+    imageView.present();
   }
 
   chatAlert(_chat){
