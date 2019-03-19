@@ -16,7 +16,7 @@
         <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
     </ion-avatar>
     <ion-card-content>
-        <button ion-button block type="button" (click)="editProfile()"><ion-icon name="create" style="padding-right: 5px;"></ion-icon>Editar perfil</button>
+        <button ion-button block type="button" (click)="editProfile()" color="cartwheel-second"><ion-icon name="create" style="padding-right: 5px;"></ion-icon>Edit profile</button>
       <ion-card-title id="username-title">
           {{user.name}}
       </ion-card-title>

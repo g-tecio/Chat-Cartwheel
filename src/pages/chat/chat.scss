@@ -36,9 +36,7 @@ page-chat {
     .youBubble p{
         float: left;
         padding: 12px 10px;
-        background-image: url('../assets/imgs/background/background_second.png');
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-color: #F37C34;
         color: #fff;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
@@ -50,9 +48,7 @@ page-chat {
     .myBubble p{
         float: right;
         padding: 12px 10px;
-        background-image: url('../assets/imgs/background/background.png');
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-color: #56477C;
         color: #fff;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
@@ -94,8 +90,23 @@ page-chat {
         padding-top: 8px;
         color: #d3d3d3;
     }
-    .imageMessage{
+    .youImage{
+        float: left;
+        padding: 10px 10px;
+        background-color: #F37C34;
+        border-radius: 20px;
         max-width: 200px;
         max-height: 200px;
+    }
+    .myImage{
+        float: right;
+        padding: 10px 10px;
+        background-color: #56477C;
+        border-radius: 20px;
+        max-width: 200px;
+        max-height: 200px;
+    }
+    .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block{
+        border-bottom: 0;
     }
 }

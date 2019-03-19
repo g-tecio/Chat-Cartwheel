@@ -1,19 +1,19 @@
 page-register {
     .registerContent{
-		background-image: url('../assets/imgs/background/background.png');
-		background-repeat: no-repeat;
-		background-size: cover;
+		background-color: #56477C;
     }
     #img_top{
         text-align: center;
     }
 	#title_top{
         text-align: center;
-        padding-bottom: 5%;
 	}
     #sub-logIn{
         text-align: center;
         color: #fff;
+    }
+    form{
+        padding-top: 10%;
     }
     #alert-danger{
         text-align: center;
@@ -33,17 +33,7 @@ page-register {
 		color: #fff;
     }
     a {
-        color: #FF4F00;
-    }
-    .button-ios{
-        background-image: url('../assets/imgs/background/background_second.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .button-md{
-        background-image: url('../assets/imgs/background/background_second.png');
-        background-repeat: no-repeat;
-        background-size: cover;
+        color: #F37C34;
     }
     .item-md{
         color: #fff;
@@ -53,5 +43,11 @@ page-register {
     }
     .item-input .label-md{
         color: #fff;
+    }
+    ion-footer{
+		background-color: #F37C34;
+    }
+    .submit-button{
+        box-shadow: inherit;
     }
 }

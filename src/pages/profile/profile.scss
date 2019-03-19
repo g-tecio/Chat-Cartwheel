@@ -4,7 +4,7 @@ page-profile {
     }
     #card_content{
         border-radius: 20px;
-        border: 1px solid #FF4F00;
+        border: 1px solid #F37C34;
     }
     .center{
         display: block;
@@ -13,7 +13,7 @@ page-profile {
         max-width: 250px;
         max-height: 250px;
         border-radius: 125px;
-        border: 1px solid #FF4F00;
+        border: 1px solid #F37C34;
     }
     ion-avatar{
         padding-top: 20px;
@@ -29,15 +29,5 @@ page-profile {
     }
     .bar-button-menutoggle-ios{
         margin: 0;
-    }
-    .button-ios{
-        background-image: url('../assets/imgs/background/background_second.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .button-md{
-        background-image: url('../assets/imgs/background/background_second.png');
-        background-repeat: no-repeat;
-        background-size: cover;
     }
 }

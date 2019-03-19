@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, LoadingController, App, ModalController } from 'ionic-angular';
+import { Platform, LoadingController, App, ModalController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Network } from '@ionic-native/network';
@@ -9,6 +9,7 @@ import { IndexPage } from '../pages/index';
 import { AuthProvider } from '../providers/auth/auth';
 
 import { ContactsPage } from './../pages/contacts/contacts';
+import { timer } from 'rxjs/observable/timer';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { ContactsPage } from './../pages/contacts/contacts';
 export class MyApp {
 
   rootPage: any;
+  showSplash = true;
 
   constructor(
     platform: Platform, 
@@ -24,13 +26,18 @@ export class MyApp {
     splashScreen: SplashScreen,
     public app: App,
     public modalCtrl: ModalController,
+    public toast: ToastController,
     private auth: AuthProvider,
     public loadingCtrl: LoadingController,
     private network: Network
     ) {
     platform.ready().then(() => {
-      statusBar.styleDefault();
+      statusBar.backgroundColorByHexString('#56477C');
 
+      timer(3000).subscribe(() => {
+        this.showSplash = false;
+      })
+      
       this.auth.afAuth.authState.subscribe((user) => {
         if(user){
           this.rootPage = TabsPage;
@@ -39,6 +46,20 @@ export class MyApp {
           this.rootPage = IndexPage;
           splashScreen.hide();
         }
+      })
+
+      this.network.onConnect().subscribe(() => {
+        this.toast.create({
+          message: 'You are online',
+          duration: 3000
+        }).present();
+      })
+
+      this.network.onDisconnect().subscribe(() => {
+        this.toast.create({
+          message: 'You are offline',
+          duration: 3000
+        }).present();
       })
     });
   }

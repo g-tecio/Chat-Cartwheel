@@ -6,9 +6,8 @@
     </ion-title>
   </div>
 
-  <div>
-    <button ion-button (click)="signIn()" item-left block><ion-icon name="log-in"></ion-icon> Log-In</button>
-    <p>Or</p>
-    <button ion-button (click)="register()" item-left block><ion-icon name="person-add"></ion-icon> Sign-Up</button>
-  </div>
+  <ion-footer ion-fixed>
+    <button ion-button (click)="signIn()" item-left color="cartwheel-second" class="buttonIndex"><ion-icon name="log-in"></ion-icon> Log-In</button>
+    <button ion-button (click)="register()" item-right color="cartwheel-second" class="buttonIndex"><ion-icon name="person-add"></ion-icon> Sign-Up</button>
+  </ion-footer>
 </ion-content>
