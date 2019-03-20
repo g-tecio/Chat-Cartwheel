@@ -1,17 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <ion-title *ngIf="user">
-      {{user.username}}
+    <ion-title *ngIf="users">
+      {{users.username}}
     </ion-title>
   </ion-navbar>
 </ion-header>
-
+  
 <ion-content fullscreen>
   <ion-slides zoom>
     <ion-slide>
       <div class="swiper-zoom-container">
-        <img class="center" *ngIf="user.profile_picture" [src]="user.profile_picture"/>
-        <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
+        <img class="center" *ngIf="users.profile_picture" [src]="users.profile_picture"/>
+        <img class="center" *ngIf="!users.profile_picture" src="assets/imgs/profile/profile.png"/>
       </div>
     </ion-slide>
   </ion-slides>
@@ -21,4 +21,3 @@
     </ion-toolbar>
   </ion-footer>
 </ion-content>
-

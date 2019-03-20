@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, NavController, NavParams } from 'ionic-angular';
+import { ViewProfilePage } from './../../pages/view-profile/view-profile';
+import { MediaChatPage } from './../../pages/media-chat/media-chat';
 
 /**
  * Generated class for the PopoverChatComponent component.
@@ -14,19 +16,26 @@ import { ViewController } from 'ionic-angular';
 export class PopoverChatComponent {
 
   items:any;
-  text: string;
+  recipient: any;
 
   constructor(
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public navCtrl: NavController,
+    public navParms: NavParams
   ) {
-    this.items = [
-      {item: 'View Profile'},
-      {item: 'Media'}
-    ]
+    this.recipient = this.navParms.get('recipient');
   }
 
-  itemsClick(item){
-    this.viewCtrl.dismiss(item);
+  viewProfile(){
+    this.navCtrl.push(ViewProfilePage, {
+      _recipient: this.recipient
+    });
+    this.viewCtrl.dismiss();
+  }
+
+  viewMedia(){
+    this.navCtrl.push(MediaChatPage);
+    this.viewCtrl.dismiss();
   }
 
 }

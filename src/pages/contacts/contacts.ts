@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, Content, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Content, Platform, ModalController } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 
@@ -7,6 +7,8 @@ import { AuthProvider } from './../../providers/auth/auth';
 import { ChatProvider } from './../../providers/chat/chat';
 import { ChatPage } from '../chat/chat';
 import { HomePage } from '../home/home';
+import { ModalImageContactsComponent } from './../../components/modal-image-contacts/modal-image-contacts';
+
 import { Subscription } from 'rxjs';
 
 
@@ -27,6 +29,7 @@ export class ContactsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public modalCtrl: ModalController,
     public db: AngularFirestore,
     public platform: Platform,
     public authService: AuthProvider,
@@ -110,6 +113,13 @@ export class ContactsPage {
         })
        }
     });
+  }
+
+  openModalContacts(user){
+    let imageView = this.modalCtrl.create(ModalImageContactsComponent, {
+      _filterUser: user
+    })
+    imageView.present();
   }
 
 }

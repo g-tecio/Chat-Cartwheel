@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content, MenuController, ActionSheetController, PopoverController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, MenuController, ActionSheetController, PopoverController, AlertController, ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 
 import { ViewProfilePage } from './../view-profile/view-profile';
@@ -13,6 +13,8 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { PopoverChatComponent } from '../../components/popover-chat/popover-chat';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
+import { ModalImageChatComponent } from './../../components/modal-image-chat/modal-image-chat';
 
 
 @IonicPage()
@@ -28,7 +30,7 @@ export class ChatPage {
   newMessage: any;
   chat: any;
   allMessages:Observable<any>;
-  recipient: any;
+  public recipient: any;
   showProfile: boolean = true;
 
   constructor(
@@ -37,6 +39,7 @@ export class ChatPage {
     public menuCtrl: MenuController,
     public actionSheetCtrl: ActionSheetController,
     public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     public camera: Camera,
     public popOverCtrl: PopoverController,
     public chatProvider: ChatProvider,
@@ -81,7 +84,7 @@ export class ChatPage {
     }, 1000);
   }
 
-  ionViewCanEnter(){
+  ionViewWillEnter(){
     this.showProfile = true;
   }
 
@@ -91,6 +94,15 @@ export class ChatPage {
 
   deleteMessage(_message){
     this.chatProvider.deleteMessage(_message);
+  }
+
+  openImageChat(image?){
+    let imageView = this.modalCtrl.create(ModalImageChatComponent, {
+      image: image,
+      _recipient: this.recipient,
+      _user: this.user
+    })
+    imageView.present();
   }
 
   alertMessage(_message){
@@ -144,19 +156,16 @@ export class ChatPage {
   }
 
   openPopOverChat(myEvent){
-    let popOver = this.popOverCtrl.create(PopoverChatComponent);
+    let popOver = this.popOverCtrl.create(PopoverChatComponent, {recipient: this.recipient});
     popOver.present({
       ev: myEvent
-    })
-    popOver.onDidDismiss(popOverData => {
-      console.log(popOverData);
     })
   }
 
   takePhoto(){
     let time = new Date().getTime();
     const options: CameraOptions = {
-      quality: 20,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -188,7 +197,7 @@ export class ChatPage {
   getImage(){
     let time = new Date().getTime();
     const options: CameraOptions = {
-      quality: 80,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       targetWidth: 250,

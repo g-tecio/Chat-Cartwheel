@@ -44,6 +44,7 @@
     "ionic-img-viewer": "^2.9.0",
     "ionic2-super-tabs": "^5.2.0",
     "ionicons": "3.0.0",
+    "ngx-pinch-zoom": "^1.2.3",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.4.0",
     "sw-toolbox": "3.6.0",
