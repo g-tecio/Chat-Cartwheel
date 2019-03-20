@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="recipient">
+      {{recipient.username}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content fullscreen>
+  <ion-slides zoom>
+    <ion-slide>
+      <div class="swiper-zoom-container">
+        <img class="center" *ngIf="image" [src]="image"/>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <ion-footer>
+    <ion-toolbar>
+      <button ion-button full (click)="closeImageModal()" id="modalBtn">Close</button>
+    </ion-toolbar>
+  </ion-footer>
+  </ion-content>

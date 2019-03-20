@@ -35,6 +35,7 @@ import { ModalImageComponent } from './../components/modal-image/modal-image';
 import { ModalImageChatComponent } from './../components/modal-image-chat/modal-image-chat';
 import { ModalImageProfileComponent } from './../components/modal-image-profile/modal-image-profile';
 import { ModalImageContactsComponent } from './../components/modal-image-contacts/modal-image-contacts';
+import { ModalImageMediaComponent } from './../components/modal-image-media/modal-image-media';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ModalImageContactsComponent } from './../components/modal-image-contact
     ModalImageComponent,
     ModalImageChatComponent,
     ModalImageProfileComponent,
-    ModalImageContactsComponent
+    ModalImageContactsComponent,
+    ModalImageMediaComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,8 @@ import { ModalImageContactsComponent } from './../components/modal-image-contact
     ModalImageComponent,
     ModalImageChatComponent,
     ModalImageProfileComponent,
-    ModalImageContactsComponent
+    ModalImageContactsComponent,
+    ModalImageMediaComponent
   ],
   providers: [
     StatusBar,

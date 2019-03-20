@@ -17,6 +17,7 @@ export class PopoverChatComponent {
 
   items:any;
   recipient: any;
+  chat: any;
 
   constructor(
     public viewCtrl: ViewController,
@@ -24,6 +25,7 @@ export class PopoverChatComponent {
     public navParms: NavParams
   ) {
     this.recipient = this.navParms.get('recipient');
+    this.chat = this.navParms.get('chat')
   }
 
   viewProfile(){
@@ -34,7 +36,10 @@ export class PopoverChatComponent {
   }
 
   viewMedia(){
-    this.navCtrl.push(MediaChatPage);
+    this.navCtrl.push(MediaChatPage, {
+      _chat: this.chat,
+      _recipient: this.recipient
+    });
     this.viewCtrl.dismiss();
   }
 

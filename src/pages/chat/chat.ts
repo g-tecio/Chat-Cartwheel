@@ -156,7 +156,7 @@ export class ChatPage {
   }
 
   openPopOverChat(myEvent){
-    let popOver = this.popOverCtrl.create(PopoverChatComponent, {recipient: this.recipient});
+    let popOver = this.popOverCtrl.create(PopoverChatComponent, {recipient: this.recipient, chat: this.chat});
     popOver.present({
       ev: myEvent
     })

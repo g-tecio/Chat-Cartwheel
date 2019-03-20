@@ -7,16 +7,15 @@
 <ion-content>
   <div [ngSwitch]="mediaTypes">
     <ion-grid *ngSwitchCase="'images'">
-      <ion-row>
-        <ion-col col-6 col-md-3 col-xl-3 *ngFor="">
-          <img>
+      <ion-row *ngIf="chatImages">
+        <ion-col col-3 *ngFor="let item of chatImages">
+          <img [src]="item.message.image" (click)="openImageMedia(item.message.image)"/>
         </ion-col>
       </ion-row>
     </ion-grid>
     <ion-grid *ngSwitchCase="'documents'">
       <ion-row>
-        <ion-col col-6 col-md-3 col-xl-3 *ngFor="">
-          <img>
+        <ion-col col-6 col-md-3 col-xl-3 >
         </ion-col>
       </ion-row>
     </ion-grid>
