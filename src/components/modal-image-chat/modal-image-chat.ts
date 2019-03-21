@@ -19,12 +19,11 @@ export class ModalImageChatComponent {
   image: any;
 
   constructor(
-    statusBar: StatusBar,
+    public statusBar: StatusBar,
     public viewCtrl: ViewController,
     public navParms: NavParams,
     public actionSheetCtrl: ActionSheetController
   ) {
-    statusBar.backgroundColorByHexString('#000');
     this.image = this.navParms.get('image')
     this.recipient = this.navParms.get('_recipient');
     this.user = this.navParms.get('_user');
@@ -54,6 +53,14 @@ export class ModalImageChatComponent {
       ]
     })
     actionSheet.present();
+  }
+
+  ionViewWillEnter(){
+    this.statusBar.backgroundColorByHexString('#000');
+  }
+
+  ionViewWillLeave(){
+    this.statusBar.backgroundColorByHexString('#56477C');
   }
 
 }

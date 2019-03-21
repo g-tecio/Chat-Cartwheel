@@ -12,16 +12,23 @@ export class ModalImageComponent {
   user: any;
 
   constructor(
-    statusBar: StatusBar,
+    public statusBar: StatusBar,
     public viewCtrl: ViewController, 
     public navPrms: NavParams
     ) {
-      statusBar.backgroundColorByHexString('#000');
       this.user = this.navPrms.get('_user');
   }
 
   closeImageModal(){
     this.viewCtrl.dismiss();
+  }
+
+  ionViewWillEnter(){
+    this.statusBar.backgroundColorByHexString('#000');
+  }
+
+  ionViewWillLeave(){
+    this.statusBar.backgroundColorByHexString('#56477C');
   }
 
 }
