@@ -7,6 +7,7 @@ import { IndexPage } from '../pages/index';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from './../pages/login/login';
 import { GroupPage } from './../pages/group/group';
+import { CreateGroupPage } from './../pages/create-group/create-group';
 import { ProfilePage } from './../pages/profile/profile';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ViewProfilePage } from './../pages/view-profile/view-profile';
@@ -45,6 +46,7 @@ import { ModalImageMediaComponent } from './../components/modal-image-media/moda
     LoginPage,
     RegisterPage,
     GroupPage,
+    CreateGroupPage,
     ProfilePage,
     ViewProfilePage,
     EditProfilePage,
@@ -74,6 +76,7 @@ import { ModalImageMediaComponent } from './../components/modal-image-media/moda
     LoginPage,
     RegisterPage,
     GroupPage,
+    CreateGroupPage,
     ProfilePage,
     ViewProfilePage,
     EditProfilePage,
