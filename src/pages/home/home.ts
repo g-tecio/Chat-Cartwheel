@@ -10,9 +10,6 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import firebase from 'firebase';
 
-import { ModalImageComponent } from './../../components/modal-image/modal-image';
-
-
 
 @Component({
   selector: 'page-home',
@@ -91,13 +88,6 @@ export class HomePage {
     if(this.platform.is('ios')){
       this.content.resize();
     }
-  }
-
-  openImageView(_chat){
-    let imageView = this.modalCtrl.create(ModalImageComponent, {
-      _user: _chat.user
-    })
-    imageView.present();
   }
 
   chatAlert(_chat){

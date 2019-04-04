@@ -1,0 +1,62 @@
+page-create-group {
+    .item-md{
+        padding-left: 0;
+    }
+    #person-icon{
+        font-size: 20px;
+    }
+    .item-ios{
+        padding-left: 0;
+    }
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 250px;
+        max-height: 250px;
+        border-radius: 125px;
+        margin-bottom: 10px;
+        border: 1px solid #F37C34;
+    }
+    .imageGroup{
+        padding-top: 20px;
+    }
+    #icon-camera{
+        padding-right: 5px;
+    }
+    #itemDivider{
+        background-color: #F37C34;
+        color: #fff;
+    }
+    #section-items{
+        text-align: center;
+    }
+    #title-item{
+        padding-bottom: 10px;
+    }
+    #members-item{
+        padding-top: 10px;
+    }
+    .item-ios.item-block .item-inner{
+        padding-right: 0;
+    }
+    .searchbar-ios{
+        padding: 10px;
+        border-top: 0;
+        border-bottom: 0;
+        background-color: #F37C34;
+    }
+    .item-md.item-block .item-inner{
+        padding-right: 0;
+    }
+    .searchbar-md{
+        padding: 10PX;
+        border-top: 0;
+        border-bottom: 0;
+        background-color: #F37C34;
+    }
+    ion-searchbar{
+        padding-top: 10px;
+    }
+    
+}

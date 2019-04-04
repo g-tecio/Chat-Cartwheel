@@ -2,8 +2,8 @@
   <ion-navbar>
     <ion-item *ngIf="recipient && showProfile" id="item-profile" (click)="viewProfile()">
       <ion-avatar item-start>
-        <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture" imageViewer/>
-        <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
+        <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture"/>
+        <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png"/>
       </ion-avatar>
       <h2>{{recipient.username}}</h2>
     </ion-item>
@@ -26,7 +26,7 @@
           </ion-avatar>
           <div class="youBubble" >
             <p *ngIf="item.message.text">{{item.message.text}}</p>
-            <img class="youImage" *ngIf="item.message.image" [src]="item.message.image" imageViewer/>
+            <img class="youImage" *ngIf="item.message.image" [src]="item.message.image" (click)="openImageChat(item.message.image)"/>
           </div>
         </ion-item>
         <ion-item *ngIf="item.sentBy === user_id" id="item-bubble">
@@ -36,7 +36,7 @@
           </ion-avatar>
           <div class="myBubble">
             <p *ngIf="item.message.text">{{item.message.text}}</p>
-            <img class="myImage" *ngIf="item.message.image" [src]="item.message.image" imageViewer/>
+            <img class="myImage" *ngIf="item.message.image" [src]="item.message.image" (click)="openImageChat(item.message.image)"/>
           </div>
         </ion-item>
         <ion-item-options slide="right" class="item-option">

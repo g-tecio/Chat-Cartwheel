@@ -1,17 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title *ngIf="user">
-      {{user.username}}
+    <ion-title *ngIf="recipient">
+      {{recipient.username}}
     </ion-title>
   </ion-navbar>
 </ion-header>
-
+  
 <ion-content fullscreen>
   <ion-slides zoom>
     <ion-slide>
       <div class="swiper-zoom-container">
-        <img class="center" *ngIf="user.profile_picture" [src]="user.profile_picture"/>
-        <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png"/>
+        <img class="center" *ngIf="image" [src]="image"/>
       </div>
     </ion-slide>
   </ion-slides>
@@ -20,5 +19,4 @@
       <button ion-button full (click)="closeImageModal()" id="modalBtn">Close</button>
     </ion-toolbar>
   </ion-footer>
-</ion-content>
-
+  </ion-content>

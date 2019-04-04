@@ -26,8 +26,8 @@
     <ion-item-sliding *ngFor="let chat of filteredChats">
       <ion-item (click)="openChat(chat)">
         <ion-avatar *ngIf="chat.user" item-left>
-          <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture" (click)="openImageView(chat)"/>
-          <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png" (click)="openImageView(chat)"/>
+          <img class="center" *ngIf="chat.user.profile_picture" [src]="chat.user.profile_picture"/>
+          <img class="center" *ngIf="!chat.user.profile_picture" src="assets/imgs/profile/profile.png"/>
         </ion-avatar>
         <h2 *ngIf="chat.user">{{chat.user.username}}</h2>
         <div *ngIf="chat.last_message">

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 
-
 import { EditProfilePage } from '../edit-profile/edit-profile';
+
+import { ModalImageProfileComponent } from './../../components/modal-image-profile/modal-image-profile';
 
 
 @IonicPage()
@@ -20,6 +21,7 @@ export class ProfilePage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public modalCtrl: ModalController,
     public authService: AuthProvider,
     public db: AngularFirestore,
     public menuCtrl: MenuController
@@ -51,6 +53,13 @@ export class ProfilePage {
     this.navCtrl.push(EditProfilePage, {
       _user: this.user,
     });
+  }
+
+  openModalProfile(){
+    let imageView = this.modalCtrl.create(ModalImageProfileComponent, {
+      _userProfile: this.user
+    })
+    imageView.present();
   }
 
 }

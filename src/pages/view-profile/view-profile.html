@@ -7,8 +7,8 @@
 <ion-content padding>
   <ion-card *ngIf="recipient" id="card_content">
     <ion-avatar>
-        <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture" imageViewer/>
-        <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
+        <img class="center" *ngIf="recipient.profile_picture" [src]="recipient.profile_picture" (click)="openImageView()"/>
+        <img class="center" *ngIf="!recipient.profile_picture" src="assets/imgs/profile/profile.png" (click)="openImageView()"/>
     </ion-avatar>
     <ion-card-content>
       <ion-card-title id="username-title">

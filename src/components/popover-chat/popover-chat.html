@@ -1,3 +1,5 @@
-<ion-list *ngFor="let item of items">
-  <button id="button-popOver" ion-item>{{item.item}}</button>
+<ion-list>
+  <button id="button-popOver" ion-item (click)="viewProfile()">View Profile</button>
+  <button id="button-popOver" ion-item (click)="viewMedia()">Media</button>
+  <button id="button-popOver" ion-item>Delete Chat</button>
 </ion-list>

@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, MenuController, Content, Platform } from 'ionic-angular';
 
+import { CreateGroupPage } from './../create-group/create-group';
+
 @Component({
   selector: 'page-group',
   templateUrl: 'group.html'
@@ -26,7 +28,7 @@ export class GroupPage {
   }
 
   createNewGroup(){
-    
+    this.navCtrl.push(CreateGroupPage);
   }
 
   toggleGroups(){

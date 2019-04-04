@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>New Group</ion-title>
+    <ion-buttons end>
+      <button ion-button id="person-icon" [disabled]="">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-avatar class="imageGroup">
+      <img class="center" src="assets/imgs/profile/group.png"/>
+    </ion-avatar>
+    <button ion-button block type="button" color="cartwheel-second" (click)="openSheetNewGroup()"><ion-icon name="camera" id="icon-camera"></ion-icon> Image Group</button>
+    <ion-item id="title-item">
+      <ion-label floating><ion-icon name="person" id="input-icon"></ion-icon> Title Group</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item-divider id="itemDivider">
+      <ion-label id="section-items">
+        Add Members 
+      </ion-label>
+    </ion-item-divider>
+    <ion-searchbar (ionInput)="searchUser($event)" [animated]="true" class="searchBarMembers"></ion-searchbar>
+    <ion-item-sliding *ngFor="let user of filteredUsers">
+      <ion-item *ngIf="user.email != currentUser">
+        <ion-avatar item-left>
+          <img *ngIf="user.profile_picture" [src]="user.profile_picture" (click)="openModalContacts(user)"/>
+          <img *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png" (click)="openModalContacts(user)"/>
+        </ion-avatar>
+        <h2>{{user.username}}</h2>
+        <p>{{user.name}}</p>
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="cartwheel-second">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

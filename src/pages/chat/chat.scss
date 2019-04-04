@@ -30,6 +30,20 @@ page-chat {
     #item-bubble .label-ios{
         margin: 5px 8px 5px 0px;
     }
+    .chatWindow{
+        padding-top: 5px;
+    }
+    .cardDate{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        margin-left: 25%;
+        margin-right: 25%;
+        padding: 5px;
+        border-radius: 20px;
+        background-color: #56477C;
+        color: #fff;
+    }
     .youBubble {
         display: inline;
     }
@@ -87,7 +101,9 @@ page-chat {
     .item-option p{
         padding-right: 5px;
         font-size: 12px;
-        padding-top: 8px;
+        align-items: center;
+        display: flex;
+        justify-items: center;
         color: #d3d3d3;
     }
     .youImage{

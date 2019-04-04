@@ -12,8 +12,8 @@
 <ion-content padding>
   <ion-card *ngIf="user" id="card_content">
     <ion-avatar>
-        <img class="center" *ngIf="user.profile_picture" [src]="user.profile_picture" imageViewer/>
-        <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png" imageViewer/>
+        <img class="center" *ngIf="user.profile_picture" [src]="user.profile_picture" (click)="openModalProfile()"/>
+        <img class="center" *ngIf="!user.profile_picture" src="assets/imgs/profile/profile.png" (click)="openModalProfile()"/>
     </ion-avatar>
     <ion-card-content>
         <button ion-button block type="button" (click)="editProfile()" color="cartwheel-second"><ion-icon name="create" style="padding-right: 5px;"></ion-icon>Edit profile</button>
